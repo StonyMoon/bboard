@@ -1,23 +1,24 @@
 package com.stonymoon.bboard.itunes;
 
+import com.stonymoon.bboard.base.BasePresenter;
+import com.stonymoon.bboard.base.BaseView;
 import com.stonymoon.bboard.bean.ItunesBean;
 
 import java.util.List;
 
-/**
- * Created by stony on 18-1-19.
- */
+
 
 public interface ItunesContract {
-    interface View {
+    interface View extends BaseView<Presenter> {
         void setTitle(String title);
-        void showItunes(List<ItunesBean> list);
 
+        void showItunesList(List<ItunesBean.Song> list);
+
+        boolean isActive();
     }
-    interface Presenter {
 
-
-
+    interface Presenter extends BasePresenter {
+        void loadItunes();
 
     }
 
