@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.Response;
@@ -20,10 +22,10 @@ public class ItunesPresenter implements ItunesContract.Presenter {
     private final ItunesContract.View mItunesView;
     private List<ItunesBean.Song> mList = new ArrayList<>();
 
+    @Inject
     public ItunesPresenter(ItunesContract.View itunesActivity) {
         mItunesView = itunesActivity;
         mItunesView.setPresenter(this);
-
 
     }
 

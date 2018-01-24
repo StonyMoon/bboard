@@ -6,10 +6,11 @@ import com.stonymoon.bboard.bean.ItunesBean;
 
 import java.util.List;
 
+import dagger.Provides;
 
 
 public interface ItunesContract {
-    interface View extends BaseView<Presenter> {
+    interface View extends BaseView<ItunesPresenter> {
         void setTitle(String title);
 
         void showItunesList(List<ItunesBean.Song> list);

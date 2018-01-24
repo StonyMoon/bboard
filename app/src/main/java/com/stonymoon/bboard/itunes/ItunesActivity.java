@@ -15,6 +15,8 @@ import com.stonymoon.bboard.bean.ItunesBean;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -22,7 +24,8 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
 
     @BindView(R.id.recycler_itunes)
     RecyclerView recyclerItunes;
-    private ItunesContract.Presenter mPresenter;
+    @Inject
+    ItunesPresenter mPresenter;
     private ItunesAdapter mListAdapter;
 
     public static void startActivity(Context context) {
@@ -35,10 +38,14 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itunes);
         ButterKnife.bind(this);
-        mPresenter = new ItunesPresenter(this);
+        //mPresenter = new ItunesPresenter(this);
         mListAdapter = new ItunesAdapter(new ArrayList<ItunesBean.Song>(0));
         recyclerItunes.setLayoutManager(new LinearLayoutManager(this));
         recyclerItunes.setAdapter(mListAdapter);
+        DaggerItunesComponent.builder()
+                .itunesModel(new ItunesModel(this))
+                .build()
+                .inject(this);
         mPresenter.start();
     }
 
@@ -65,7 +72,7 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
     }
 
     @Override
-    public void setPresenter(ItunesContract.Presenter presenter) {
+    public void setPresenter(ItunesPresenter presenter) {
         mPresenter = presenter;
     }
 
