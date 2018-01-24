@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.stonymoon.bboard.base.BasePresenter;
 import com.stonymoon.bboard.bean.ItunesBean;
 import com.stonymoon.bboard.util.HttpUtil;
+import com.stonymoon.bboard.util.UrlUtil;
 
 import java.io.IOException;
 import java.util.ArrayList;
@@ -27,7 +28,8 @@ public class ItunesPresenter implements ItunesContract.Presenter {
     }
 
     public void loadItunes() {
-        HttpUtil.sendOkHttpRequest("http://120.24.238.200:5000/itunes", new Callback() {
+        String url = UrlUtil.getItunesList();
+        HttpUtil.sendOkHttpRequest(url, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 
@@ -52,8 +54,6 @@ public class ItunesPresenter implements ItunesContract.Presenter {
         loadItunes();
 
     }
-
-
 
 
 }
