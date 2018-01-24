@@ -39,7 +39,7 @@ public class ItunesPresenter implements ItunesContract.Presenter {
             public void onResponse(Call call, Response response) throws IOException {
                 Gson gson = new Gson();
                 ItunesBean bean = gson.fromJson(response.body().string(), ItunesBean.class);
-                mList.addAll(bean.songs);
+                mList.addAll(bean.getSongs());
                 mItunesView.showItunesList(mList);
 
             }

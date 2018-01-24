@@ -8,7 +8,7 @@ public class UrlUtil {
     public static final String BASE_URL = "http://120.24.238.200:5000";
 
     public static String getItunesList() {
-        return BASE_URL + "itunes";
+        return BASE_URL + "/itunes";
 
 
     }

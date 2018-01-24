@@ -49,31 +49,33 @@ public class ItunesAdapter extends RecyclerView.Adapter<ItunesAdapter.ItunesView
 
     public void onBindViewHolder(ItunesViewHolder holder, int position) {
         ItunesBean.Song song = mSongs.get(position);
-        holder.tvTitle.setText(song.title);
-        String po = (song.nowPoint) + "";
-        holder.tvPoint.setText(po);
-        holder.tvPoint.setText(song.position + "");
-        if (song.discounted == 1) {
+        holder.tvTitle.setText(song.getTitle());
+        String point = String.format("%.2f", song.getNowPoint());
+        holder.tvPoint.setText(point);
+        holder.tvRank.setText(song.getPosition() + "");
+
+
+        if (song.getDiscounted() == 1) {
             holder.tvDiscounted.setText("$");
         } else {
             holder.tvDiscounted.setText(" ");
 
         }
-        switch (song.nowColor) {
+        switch (song.getNowColor()) {
             case "n2":
-                holder.itunesLayout.setBackgroundColor(0xFFFFBBBB);
+                holder.llItunes.setBackgroundColor(0xFFFFBBBB);
                 break;
             case "n1":
-                holder.itunesLayout.setBackgroundColor(0xFFFFDDDD);
+                holder.llItunes.setBackgroundColor(0xFFFFDDDD);
                 break;
             case "p1":
-                holder.itunesLayout.setBackgroundColor(0xFFDDFFDD);
+                holder.llItunes.setBackgroundColor(0xFFDDFFDD);
                 break;
             case "p2":
-                holder.itunesLayout.setBackgroundColor(0xFFBBFFBB);
+                holder.llItunes.setBackgroundColor(0xFFBBFFBB);
                 break;
             default:
-                holder.itunesLayout.setBackgroundColor(0xFFFFFFFF);
+                holder.llItunes.setBackgroundColor(0xFFFFFFFF);
                 break;
 
         }
@@ -86,15 +88,15 @@ public class ItunesAdapter extends RecyclerView.Adapter<ItunesAdapter.ItunesView
         TextView tvRank;
         TextView tvPoint;
         TextView tvDiscounted;
-        LinearLayout itunesLayout;
+        LinearLayout llItunes;
 
         public ItunesViewHolder(View view) {
             super(view);
-            tvTitle = (TextView) view.findViewById(R.id.itunes_title_text);
-            tvRank = (TextView) view.findViewById(R.id.itunes_rank_text);
-            tvPoint = (TextView) view.findViewById(R.id.itunes_point_text);
-            tvDiscounted = (TextView) view.findViewById(R.id.itunes_discounted_text);
-            itunesLayout = (LinearLayout) view.findViewById(R.id.itunes_layout);
+            tvTitle = (TextView) view.findViewById(R.id.tv_itunes_title);
+            tvRank = (TextView) view.findViewById(R.id.tv_itunes_rank);
+            tvPoint = (TextView) view.findViewById(R.id.tv_itunes_point);
+            tvDiscounted = (TextView) view.findViewById(R.id.tv_itunes_discounted);
+            llItunes = (LinearLayout) view.findViewById(R.id.ll_itunes_item);
         }
 
     }
