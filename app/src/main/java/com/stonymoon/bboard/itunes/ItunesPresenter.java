@@ -1,6 +1,5 @@
 package com.stonymoon.bboard.itunes;
 
-import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.stonymoon.bboard.base.BasePresenter;
@@ -8,6 +7,7 @@ import com.stonymoon.bboard.bean.ItunesBean;
 import com.stonymoon.bboard.util.HttpUtil;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import okhttp3.Call;
@@ -17,7 +17,7 @@ import okhttp3.Response;
 
 public class ItunesPresenter implements ItunesContract.Presenter {
     private final ItunesContract.View mItunesView;
-    private List<ItunesBean.Song> mList;
+    private List<ItunesBean.Song> mList = new ArrayList<>();
 
     public ItunesPresenter(ItunesContract.View itunesActivity) {
         mItunesView = itunesActivity;
@@ -27,7 +27,7 @@ public class ItunesPresenter implements ItunesContract.Presenter {
     }
 
     public void loadItunes() {
-        HttpUtil.sendOkHttpRequest("", new Callback() {
+        HttpUtil.sendOkHttpRequest("http://120.24.238.200:5000/itunes", new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
 
@@ -39,6 +39,7 @@ public class ItunesPresenter implements ItunesContract.Presenter {
                 ItunesBean bean = gson.fromJson(response.body().string(), ItunesBean.class);
                 mList.addAll(bean.songs);
                 mItunesView.showItunesList(mList);
+
             }
         });
 
@@ -47,12 +48,10 @@ public class ItunesPresenter implements ItunesContract.Presenter {
 
     @Override
     public void start() {
-
+        mList.clear();
+        loadItunes();
 
     }
-
-
-
 
 
 

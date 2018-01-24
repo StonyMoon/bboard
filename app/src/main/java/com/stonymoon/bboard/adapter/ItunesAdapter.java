@@ -58,7 +58,6 @@ public class ItunesAdapter extends RecyclerView.Adapter<ItunesAdapter.ItunesView
         } else {
             holder.tvDiscounted.setText(" ");
 
-
         }
         switch (song.nowColor) {
             case "n2":
