@@ -34,7 +34,7 @@ public class ItunesPresenter implements ItunesContract.Presenter {
         HttpUtil.sendOkHttpRequest(url, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
-
+                mItunesView.showLoadFail();
             }
 
             @Override

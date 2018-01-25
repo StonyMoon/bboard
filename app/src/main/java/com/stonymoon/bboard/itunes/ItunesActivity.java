@@ -7,6 +7,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.widget.Toast;
 
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.adapter.ItunesAdapter;
@@ -38,7 +39,6 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itunes);
         ButterKnife.bind(this);
-        //mPresenter = new ItunesPresenter(this);
         mListAdapter = new ItunesAdapter(new ArrayList<ItunesBean.Song>(0));
         recyclerItunes.setLayoutManager(new LinearLayoutManager(this));
         recyclerItunes.setAdapter(mListAdapter);
@@ -76,5 +76,14 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
         mPresenter = presenter;
     }
 
+    @Override
+    public void showLoadFail() {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(ItunesActivity.this, "加载失败", Toast.LENGTH_SHORT).show();
+            }
+        });
 
+    }
 }

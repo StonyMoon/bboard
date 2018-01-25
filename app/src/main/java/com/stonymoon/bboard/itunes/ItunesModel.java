@@ -1,7 +1,5 @@
 package com.stonymoon.bboard.itunes;
 
-import com.stonymoon.bboard.bean.ItunesBean;
-
 import dagger.Module;
 import dagger.Provides;
 

@@ -15,6 +15,8 @@ public interface ItunesContract {
 
         void showItunesList(List<ItunesBean.Song> list);
 
+        void showLoadFail();
+
         boolean isActive();
     }
 
