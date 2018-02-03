@@ -2,6 +2,8 @@ package com.stonymoon.bboard.itunes;
 
 
 import com.google.gson.Gson;
+import com.stonymoon.bboard.api.BaseDataManager;
+import com.stonymoon.bboard.api.services.ItunesService;
 import com.stonymoon.bboard.base.BasePresenter;
 import com.stonymoon.bboard.bean.ItunesBean;
 import com.stonymoon.bboard.util.HttpUtil;
@@ -13,9 +15,9 @@ import java.util.List;
 
 import javax.inject.Inject;
 
-import okhttp3.Call;
-import okhttp3.Callback;
-import okhttp3.Response;
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 
 public class ItunesPresenter implements ItunesContract.Presenter {
@@ -30,23 +32,22 @@ public class ItunesPresenter implements ItunesContract.Presenter {
     }
 
     public void loadItunes() {
-        String url = UrlUtil.getItunesList();
-        HttpUtil.sendOkHttpRequest(url, new Callback() {
+        Call<ItunesBean> call = BaseDataManager.getHttpManager().create(ItunesService.class).getManagerData();
+        call.enqueue(new Callback<ItunesBean>() {
             @Override
-            public void onFailure(Call call, IOException e) {
-                mItunesView.showLoadFail();
+            public void onResponse(Call<ItunesBean> call, Response<ItunesBean> response) {
+                if (response.body() == null) {
+                    return;
+                }
+                mList.addAll(response.body().getSongs());
+                mItunesView.showItunesList(mList);
             }
 
             @Override
-            public void onResponse(Call call, Response response) throws IOException {
-                Gson gson = new Gson();
-                ItunesBean bean = gson.fromJson(response.body().string(), ItunesBean.class);
-                mList.addAll(bean.getSongs());
-                mItunesView.showItunesList(mList);
-
+            public void onFailure(Call<ItunesBean> call, Throwable t) {
+                //todo
             }
         });
-
 
     }
 

@@ -32,10 +32,14 @@ dependencies {
     // Dependencies for ButterKnife
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
-    //Dependencies for Gson
+    // Dependencies for Gson
     compile 'com.google.code.gson:gson:2.8.2'
-    //Dependencies for RecyclerView
+    // Dependencies for RecyclerView
     compile 'com.android.support:recyclerview-v7:26.1.0'
+    // Dependencies for Retrofit
+    compile 'com.squareup.retrofit2:retrofit:2.3.0'
+    compile 'com.squareup.retrofit2:converter-gson:2.3.0'
+
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation 'com.android.support:appcompat-v7:26.1.0'
     implementation 'com.android.support.constraint:constraint-layout:1.0.2'
