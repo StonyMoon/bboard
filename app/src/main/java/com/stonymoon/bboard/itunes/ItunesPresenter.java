@@ -1,23 +1,19 @@
 package com.stonymoon.bboard.itunes;
 
 
-import com.google.gson.Gson;
 import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.ItunesService;
-import com.stonymoon.bboard.base.BasePresenter;
 import com.stonymoon.bboard.bean.ItunesBean;
-import com.stonymoon.bboard.util.HttpUtil;
-import com.stonymoon.bboard.util.UrlUtil;
 
-import java.io.IOException;
+
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
 
 
 public class ItunesPresenter implements ItunesContract.Presenter {
@@ -32,22 +28,29 @@ public class ItunesPresenter implements ItunesContract.Presenter {
     }
 
     public void loadItunes() {
-        Call<ItunesBean> call = BaseDataManager.getHttpManager().create(ItunesService.class).getManagerData();
-        call.enqueue(new Callback<ItunesBean>() {
-            @Override
-            public void onResponse(Call<ItunesBean> call, Response<ItunesBean> response) {
-                if (response.body() == null) {
-                    return;
-                }
-                mList.addAll(response.body().getSongs());
-                mItunesView.showItunesList(mList);
-            }
+        ItunesService service = BaseDataManager.getHttpManager().create(ItunesService.class);
+        service.getManagerData()
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribe(new Subscriber<ItunesBean>() {
+                    @Override
+                    public void onCompleted() {
+                        //todo
+                    }
 
-            @Override
-            public void onFailure(Call<ItunesBean> call, Throwable t) {
-                //todo
-            }
-        });
+                    @Override
+                    public void onError(Throwable e) {
+                        //todo
+                    }
+
+                    @Override
+                    public void onNext(ItunesBean itunesBean) {
+                        mList.addAll(itunesBean.getSongs());
+                        mItunesView.showItunesList(mList);
+                    }
+                });
+
 
     }
 
