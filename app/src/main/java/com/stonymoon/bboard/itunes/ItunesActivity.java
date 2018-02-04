@@ -7,6 +7,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.stonymoon.bboard.R;
@@ -25,6 +27,9 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
 
     @BindView(R.id.recycler_itunes)
     RecyclerView recyclerItunes;
+    @BindView(R.id.pb_itunes)
+    ProgressBar pbItunes;
+
     @Inject
     ItunesPresenter mPresenter;
     private ItunesAdapter mListAdapter;
@@ -56,13 +61,7 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
 
     @Override
     public void showItunesList(final List<ItunesBean.Song> list) {
-
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mListAdapter.setData(list);
-            }
-        });
+        mListAdapter.setData(list);
 
     }
 
@@ -78,12 +77,18 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
 
     @Override
     public void showLoadFail() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                Toast.makeText(ItunesActivity.this, "加载失败", Toast.LENGTH_SHORT).show();
-            }
-        });
+        pbItunes.setVisibility(View.GONE);
+        Toast.makeText(ItunesActivity.this, "加载失败", Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    public void showLoading() {
+        pbItunes.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void showLoadingSuccess() {
+        pbItunes.setVisibility(View.GONE);
     }
 }

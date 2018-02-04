@@ -17,7 +17,12 @@ public interface ItunesContract {
 
         void showLoadFail();
 
+        void showLoading();
+
+        void showLoadingSuccess();
         boolean isActive();
+
+
     }
 
     interface Presenter extends BasePresenter {

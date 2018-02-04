@@ -28,26 +28,27 @@ public class ItunesPresenter implements ItunesContract.Presenter {
     }
 
     public void loadItunes() {
+        mItunesView.showLoading();
         ItunesService service = BaseDataManager.getHttpManager().create(ItunesService.class);
         service.getManagerData()
-                .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<ItunesBean>() {
                     @Override
                     public void onCompleted() {
-                        //todo
+
                     }
 
                     @Override
                     public void onError(Throwable e) {
-                        //todo
+                        mItunesView.showLoadFail();
                     }
 
                     @Override
                     public void onNext(ItunesBean itunesBean) {
                         mList.addAll(itunesBean.getSongs());
                         mItunesView.showItunesList(mList);
+                        mItunesView.showLoadingSuccess();
                     }
                 });
 
