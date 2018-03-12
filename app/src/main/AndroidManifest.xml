@@ -18,7 +18,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".itunes.ItunesActivity"></activity>
+        <activity android:name=".itunes.ItunesActivity" />
+        <activity android:name=".rank.RankActivity"></activity>
     </application>
 
 </manifest>

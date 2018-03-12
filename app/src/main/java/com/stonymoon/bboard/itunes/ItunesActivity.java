@@ -51,7 +51,7 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
                 .itunesModel(new ItunesModel(this))
                 .build()
                 .inject(this);
-        mPresenter.start();
+
     }
 
     @Override
@@ -90,5 +90,11 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
     @Override
     public void showLoadingSuccess() {
         pbItunes.setVisibility(View.GONE);
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        mPresenter.start();
     }
 }
