@@ -6,10 +6,6 @@ import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
-/**
- * Created by Administrator on 2018/3/12.
- */
-
 public class ActivityUtil {
     public static void addFragmentToActivity(@NonNull FragmentManager fragmentManager,
                                              @NonNull Fragment fragment, int frameId) {

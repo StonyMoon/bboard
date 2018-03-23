@@ -96,7 +96,7 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ItunesViewHold
 
         public ItunesViewHolder(View view) {
             super(view);
-            titleText = (TextView) view.findViewById(R.id.billboard_name_text);
+            titleText = (TextView) view.findViewById(R.id.tv_rank_title);
             rankText = (TextView) view.findViewById(R.id.tv_rank_rank);
             lastWeekText = (TextView) view.findViewById(R.id.tv_rank_lastweek);
             authorText = (TextView) view.findViewById(R.id.tv_rank_singer);

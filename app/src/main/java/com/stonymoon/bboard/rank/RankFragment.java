@@ -27,9 +27,13 @@ public class RankFragment extends Fragment implements RankConstract.View {
     private RankConstract.Presenter mPresenter;
     private RankAdapter mAdapter;
 
-
     public RankFragment() {
 
+    }
+
+    //因为Fragment
+    public static RankFragment getInstance() {
+        return new RankFragment();
     }
 
     @Override
