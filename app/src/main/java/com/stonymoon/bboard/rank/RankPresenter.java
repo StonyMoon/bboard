@@ -31,7 +31,7 @@ public class RankPresenter implements RankContract.Presenter {
         service.getUK()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<Response<ResponseBody>>() {
+                .subscribe(new Subscriber<List>() {
                     @Override
                     public void onCompleted() {
                         mRankView.showProgressBar(false);
@@ -44,16 +44,8 @@ public class RankPresenter implements RankContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(Response<ResponseBody> response) {
-                        String body = null;
-                        try {
-                            body = response.body().string();
-                        } catch (IOException e) {
-                            mRankView.showProgressBar(false);
-                            mRankView.showError();
-                        }
-                        List<RankBean> rankBeans = ResponseUtil.handleRankResponse(body);
-                        mRankView.showList(rankBeans);
+                    public void onNext(List response) {
+                        mRankView.showList((List<RankBean>) response);
                     }
                 });
 

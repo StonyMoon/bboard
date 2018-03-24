@@ -1,20 +1,21 @@
 package com.stonymoon.bboard.api.services;
 
 
-import okhttp3.ResponseBody;
-import retrofit2.Response;
+import com.stonymoon.bboard.bean.RankBean;
+
+import java.util.List;
 import retrofit2.http.GET;
 import rx.Observable;
 
 
 public interface RankService {
     @GET("/us_singles_top_100")
-    Observable<Response<ResponseBody>> getUS();
+    Observable<List> getUS();
 
     @GET("/uk_singles_top_75")
-    Observable<Response<ResponseBody>> getUK();
+    Observable<List> getUK();
 
     @GET("/world_singles_top_40")
-    Observable<Response<ResponseBody>> getWorld();
+    Observable<List> getWorld();
 //callback/GraphData/
 }
