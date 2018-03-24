@@ -14,7 +14,7 @@ import butterknife.ButterKnife;
 
 
 public class RankActivity extends AppCompatActivity {
-    private RankConstract.Presenter mPresenter;
+    private RankContract.Presenter mPresenter;
 
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, RankActivity.class);
@@ -31,9 +31,7 @@ public class RankActivity extends AppCompatActivity {
                 .findFragmentById(R.id.fl_rank_content);
         if (rankFragment == null) {
             rankFragment = RankFragment.getInstance();
-
         }
-
 
         ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), rankFragment, R.id.fl_rank_content);
         // 因为activity与fragment生命周期同步所以在fragment调用onResume之前presenter已经被实例化了

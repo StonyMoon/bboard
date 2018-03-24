@@ -6,8 +6,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class AchartsManager {
     private static Retrofit mRetrofit = new Retrofit.Builder()
-            .baseUrl("https://acharts.co/callback/GraphData")
-            .addConverterFactory(GsonConverterFactory.create())
+            .baseUrl("https://acharts.co/")
             .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
             .build();
 

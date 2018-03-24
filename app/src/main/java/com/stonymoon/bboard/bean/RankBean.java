@@ -1,8 +1,5 @@
 package com.stonymoon.bboard.bean;
 
-/**
- * Created by Administrator on 2018/3/12.
- */
 
 public class RankBean {
     private String name;
@@ -12,6 +9,16 @@ public class RankBean {
     private int week; //在榜周数
     private int peak;
     private int lastWeek;//上周名次
+
+    public RankBean(String name, String author, int id, int rank, int week, int peak, int lastWeek) {
+        this.name = name;
+        this.author = author;
+        this.id = id;
+        this.rank = rank;
+        this.week = week;
+        this.peak = peak;
+        this.lastWeek = lastWeek;
+    }
 
     public String getName() {
         return name;

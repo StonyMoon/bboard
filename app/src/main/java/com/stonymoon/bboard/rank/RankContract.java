@@ -6,16 +6,14 @@ import com.stonymoon.bboard.bean.RankBean;
 
 import java.util.List;
 
-/**
- * Created by Administrator on 2018/3/12.
- */
 
-public interface RankConstract {
+public interface RankContract {
     interface View extends BaseView<Presenter> {
         void showProgressBar(boolean show);
 
         void showList(List<RankBean> list);
 
+        void showError();
 
     }
 

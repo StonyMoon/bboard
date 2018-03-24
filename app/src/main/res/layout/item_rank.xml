@@ -36,7 +36,7 @@
                 android:id="@+id/iv_rank"
                 android:layout_width="15dp"
                 android:layout_height="15dp"
-                android:src="@drawable/up_arrow" />
+                android:src="@mipmap/up_arrow" />
 
             <TextView
                 android:id="@+id/tv_rank_lastweek"

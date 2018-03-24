@@ -71,12 +71,12 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ItunesViewHold
         holder.authorText.setText(RankBean.getAuthor());
         holder.titleText.setText(RankBean.getName());
         if (RankBean.getLastWeek() > RankBean.getRank()) {
-            holder.rankImage.setImageResource(R.drawable.up_arrow);
+            holder.rankImage.setImageResource(R.mipmap.up_arrow);
         } else if (RankBean.getLastWeek() == RankBean.getRank()) {
-            holder.rankImage.setImageResource(R.drawable.line);
+            holder.rankImage.setImageResource(R.mipmap.line);
 
         } else {
-            holder.rankImage.setImageResource(R.drawable.down_arrow);
+            holder.rankImage.setImageResource(R.mipmap.down_arrow);
         }
         if (RankBean.getLastWeek() == 101) {
             holder.lastWeekText.setText("new");
