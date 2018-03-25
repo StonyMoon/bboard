@@ -1,19 +1,18 @@
-package com.stonymoon.bboard.rank;
+package com.stonymoon.bboard.songdashboard;
 
 import com.stonymoon.bboard.base.BasePresenter;
 import com.stonymoon.bboard.base.BaseView;
-import com.stonymoon.bboard.bean.RankBean;
 
 import java.util.List;
 
-
-public interface RankContract {
+public interface SongDashboardContract {
     interface View extends BaseView<Presenter> {
-        void showProgressBar(boolean show);
-
-        void showList(List<RankBean> list);
+        void showChart(List list);
 
         void showError();
+
+        void showProgressBar(boolean show);
+
 
     }
 
@@ -21,6 +20,5 @@ public interface RankContract {
 
 
     }
-
 
 }

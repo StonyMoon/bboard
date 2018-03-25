@@ -19,7 +19,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".itunes.ItunesActivity" />
-        <activity android:name=".rank.RankActivity"></activity>
+        <activity android:name=".rank.RankActivity" />
+        <activity android:name=".songdashboard.SongDashboardActivity"></activity>
     </application>
 
 </manifest>
