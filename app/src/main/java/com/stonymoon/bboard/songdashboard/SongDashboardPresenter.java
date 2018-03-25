@@ -2,7 +2,6 @@ package com.stonymoon.bboard.songdashboard;
 
 import android.util.Log;
 
-import com.google.gson.Gson;
 import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.RankService;
 import com.stonymoon.bboard.bean.SongBean;
