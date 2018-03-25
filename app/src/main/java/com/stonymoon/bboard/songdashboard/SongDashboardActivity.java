@@ -13,7 +13,6 @@ import butterknife.ButterKnife;
 
 public class SongDashboardActivity extends AppCompatActivity {
     private SongDashboardContract.Presenter mPresenter;
-
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, SongDashboardActivity.class);
         context.startActivity(intent);
@@ -30,7 +29,7 @@ public class SongDashboardActivity extends AppCompatActivity {
             songDashboardFragment = SongDashboardFragment.getInstance();
         }
         ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), songDashboardFragment, R.id.fl_song_dashboard_content);
-        mPresenter = new SongDashboardPresenter();
+        mPresenter = new SongDashboardPresenter(songDashboardFragment);
         songDashboardFragment.setPresenter(mPresenter);
     }
 }

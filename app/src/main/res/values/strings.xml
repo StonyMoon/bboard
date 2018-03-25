@@ -2,5 +2,6 @@
     <string name="app_name">Bboard</string>
     <string name="itunes">itunes</string>
     <string name="rank">rank</string>
+    <string name="song_dashboard">Song Board</string>
     <string name="error_message">加载失败</string>
 </resources>
