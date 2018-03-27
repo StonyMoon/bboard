@@ -9,9 +9,15 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
 
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
 import com.stonymoon.bboard.R;
+import com.stonymoon.bboard.bean.SongBean;
 import com.stonymoon.bboard.util.ToastUtil;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import butterknife.BindView;
@@ -22,6 +28,12 @@ import butterknife.Unbinder;
 public class SongDashboardFragment extends Fragment implements SongDashboardContract.View {
     @BindView(R.id.pb_song_dashboard)
     ProgressBar mProgressBar;
+    @BindView(R.id.chart_rank)
+    LineChart mChart;
+    List<Entry> entries = new ArrayList<>();
+
+
+
 
     private SongDashboardContract.Presenter mPresenter;
     private Context mContext;
@@ -46,7 +58,15 @@ public class SongDashboardFragment extends Fragment implements SongDashboardCont
     }
 
     @Override
-    public void showChart(List list) {
+    public void showChart(List<List<Long>> data) {
+        int size = data.size();
+        for (int i = 0; i < size; i++) {
+            entries.add(new Entry(i, data.get(i).get(2)));
+        }
+        LineDataSet dataSet = new LineDataSet(entries, "Label");
+        LineData lineData = new LineData(dataSet);
+        mChart.setData(lineData);
+        mChart.invalidate(); // refresh
 
     }
 

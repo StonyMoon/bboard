@@ -38,6 +38,7 @@ public class SongDashboardPresenter implements SongDashboardContract.Presenter {
                     @Override
                     public void onNext(SongBean songBean) {
                         mView.showProgressBar(false);
+                        mView.showChart(songBean.getData().getData());
                         Log.e("SDP", songBean.toString());
                     }
                 });
