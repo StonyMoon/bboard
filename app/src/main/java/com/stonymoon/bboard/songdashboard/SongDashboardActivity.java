@@ -6,15 +6,18 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.stonymoon.bboard.R;
-import com.stonymoon.bboard.rank.RankActivity;
 import com.stonymoon.bboard.util.ActivityUtil;
 
 import butterknife.ButterKnife;
 
 public class SongDashboardActivity extends AppCompatActivity {
+    private static final String SONG_ID = "SONG_ID";
+
     private SongDashboardContract.Presenter mPresenter;
-    public static void startActivity(Context context) {
+
+    public static void startActivity(Context context, String songId) {
         Intent intent = new Intent(context, SongDashboardActivity.class);
+        intent.putExtra(SONG_ID, songId);
         context.startActivity(intent);
     }
 
@@ -29,7 +32,7 @@ public class SongDashboardActivity extends AppCompatActivity {
             songDashboardFragment = SongDashboardFragment.getInstance();
         }
         ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), songDashboardFragment, R.id.fl_song_dashboard_content);
-        mPresenter = new SongDashboardPresenter(songDashboardFragment);
+        mPresenter = new SongDashboardPresenter(songDashboardFragment, getIntent().getStringExtra(SONG_ID));
         songDashboardFragment.setPresenter(mPresenter);
     }
 }

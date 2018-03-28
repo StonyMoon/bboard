@@ -6,9 +6,7 @@ import android.view.View;
 
 import com.stonymoon.bboard.itunes.ItunesActivity;
 import com.stonymoon.bboard.rank.RankActivity;
-import com.stonymoon.bboard.songdashboard.SongDashboardActivity;
 
-import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -25,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
                 RankActivity.startActivity(this);
                 break;
             case R.id.btn_main_song_dashboard:
-                SongDashboardActivity.startActivity(this);
+
         }
 
 

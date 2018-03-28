@@ -1,6 +1,5 @@
 package com.stonymoon.bboard.songdashboard;
 
-import android.util.Log;
 
 import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.RankService;
@@ -12,15 +11,23 @@ import rx.schedulers.Schedulers;
 
 public class SongDashboardPresenter implements SongDashboardContract.Presenter {
     private SongDashboardContract.View mView;
+    private String mSongId;
 
-    SongDashboardPresenter(SongDashboardContract.View view) {
+    SongDashboardPresenter(SongDashboardContract.View view, String songId) {
         mView = view;
+        mSongId = songId;
     }
     @Override
     public void start() {
+
+
+    }
+
+    @Override
+    public void showRank() {
         RankService rankService = BaseDataManager.getHttpManager().create(RankService.class);
         mView.showProgressBar(true);
-        rankService.getRank("107913", "uk_singles_top_75", "automatic_first")
+        rankService.getRank(mSongId, "uk_singles_top_75", "automatic_first")
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<SongBean>() {
@@ -41,6 +48,5 @@ public class SongDashboardPresenter implements SongDashboardContract.Presenter {
                         mView.showChart(songBean.getData().getData());
                     }
                 });
-
     }
 }

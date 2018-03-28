@@ -18,7 +18,7 @@ public interface SongDashboardContract {
     }
 
     interface Presenter extends BasePresenter {
-
+        void showRank();
 
     }
 

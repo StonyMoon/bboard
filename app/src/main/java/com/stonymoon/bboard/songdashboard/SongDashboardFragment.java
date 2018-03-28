@@ -140,6 +140,7 @@ public class SongDashboardFragment extends Fragment implements SongDashboardCont
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_song_dashboard, container, false);
         mUnbinder = ButterKnife.bind(this, root);
+        mPresenter.showRank();
         return root;
     }
 

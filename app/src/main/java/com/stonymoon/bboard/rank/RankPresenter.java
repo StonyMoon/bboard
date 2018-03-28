@@ -30,7 +30,6 @@ public class RankPresenter implements RankContract.Presenter {
                 .subscribe(new Subscriber<List>() {
                     @Override
                     public void onCompleted() {
-                        mRankView.showProgressBar(false);
                     }
 
                     @Override

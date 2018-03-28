@@ -2,7 +2,6 @@ package com.stonymoon.bboard.adapter;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +11,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.stonymoon.bboard.R;
-import com.stonymoon.bboard.bean.ItunesBean;
 import com.stonymoon.bboard.bean.RankBean;
-import com.stonymoon.bboard.rank.RankActivity;
+import com.stonymoon.bboard.songdashboard.SongDashboardActivity;
 
 import java.util.List;
 
@@ -39,21 +37,15 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ItunesViewHold
         }
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_rank, parent, false);
         final ItunesViewHolder holder = new ItunesViewHolder(view);
-//        holder.RankLayout.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                int position = holder.getAdapterPosition();
-//                RankBean b = RankList.get(position);
-//                Intent intent = new Intent(mContext, RankActivity.class);
-//                intent.putExtra("name", b.getName());
-//                intent.putExtra("id", b.getId());
-//                intent.putExtra("type", SearchBean.SONG);
-//                intent.putExtra("author", b.getAuthor());
-//                intent.putExtra("country", "US");
-//                mContext.startActivity(intent);
-//
-//            }
-//        });
+        holder.RankLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int position = holder.getAdapterPosition();
+                RankBean b = mRankList.get(position);
+                SongDashboardActivity.startActivity(mContext, b.getId() + "");
+
+            }
+        });
 
 
         return holder;

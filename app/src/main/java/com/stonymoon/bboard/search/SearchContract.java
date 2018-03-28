@@ -1,4 +1,4 @@
-package com.stonymoon.bboard.seach;
+package com.stonymoon.bboard.search;
 
 
 import com.stonymoon.bboard.base.BasePresenter;

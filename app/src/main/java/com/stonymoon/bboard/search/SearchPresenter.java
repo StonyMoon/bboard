@@ -1,4 +1,4 @@
-package com.stonymoon.bboard.seach;
+package com.stonymoon.bboard.search;
 
 /**
  * Created by Stony on 2018/3/28.
