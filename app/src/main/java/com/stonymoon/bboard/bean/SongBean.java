@@ -57,7 +57,7 @@ public class SongBean {
 
         private String label;
         private String chartid;
-        private List<List<Long>> data;
+        private List<List<Double>> data;
 
         public String getLabel() {
             return label;
@@ -75,11 +75,11 @@ public class SongBean {
             this.chartid = chartid;
         }
 
-        public List<List<Long>> getData() {
+        public List<List<Double>> getData() {
             return data;
         }
 
-        public void setData(List<List<Long>> data) {
+        public void setData(List<List<Double>> data) {
             this.data = data;
         }
     }
