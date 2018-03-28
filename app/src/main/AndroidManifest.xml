@@ -20,7 +20,8 @@
         </activity>
         <activity android:name=".itunes.ItunesActivity" />
         <activity android:name=".rank.RankActivity" />
-        <activity android:name=".songdashboard.SongDashboardActivity"></activity>
+        <activity android:name=".songdashboard.SongDashboardActivity" />
+        <activity android:name=".seach.SearchActivity"></activity>
     </application>
 
 </manifest>
