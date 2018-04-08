@@ -3,6 +3,8 @@
     <string name="itunes">itunes</string>
     <string name="rank">rank</string>
     <string name="song_dashboard">Song Board</string>
+
+
     <string name="error_message">加载失败</string>
     <string name="chart_name">历史走势</string>
     <string name="search">搜索</string>

@@ -6,6 +6,7 @@ import android.view.View;
 
 import com.stonymoon.bboard.itunes.ItunesActivity;
 import com.stonymoon.bboard.rank.RankActivity;
+import com.stonymoon.bboard.search.SearchActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -13,7 +14,7 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity {
 
 
-    @OnClick({R.id.btn_main_itunes, R.id.btn_main_rank, R.id.btn_main_song_dashboard})
+    @OnClick({R.id.btn_main_itunes, R.id.btn_main_rank, R.id.btn_main_song_dashboard, R.id.btn_main_search})
     void onButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_main_itunes:
@@ -23,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
                 RankActivity.startActivity(this);
                 break;
             case R.id.btn_main_song_dashboard:
+                break;
+            case R.id.btn_main_search:
+                SearchActivity.startActivity(this);
 
         }
 
