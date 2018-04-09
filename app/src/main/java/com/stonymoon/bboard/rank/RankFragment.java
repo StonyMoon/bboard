@@ -69,6 +69,7 @@ public class RankFragment extends Fragment implements RankContract.View {
         mAdapter = new RankAdapter(new ArrayList<RankBean.ResourceBean>());
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
+        mPresenter.start();
         return root;
     }
 
@@ -76,7 +77,7 @@ public class RankFragment extends Fragment implements RankContract.View {
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.start();
+
     }
 
     @Override

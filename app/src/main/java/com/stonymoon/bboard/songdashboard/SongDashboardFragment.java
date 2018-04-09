@@ -83,6 +83,7 @@ public class SongDashboardFragment extends Fragment implements SongDashboardCont
 
         LineData lineData = new LineData(dataSet);
         mChart.setScaleYEnabled(false);
+        mChart.setNoDataText("");
 
         // 自定义X轴样式
         XAxis xAxis = mChart.getXAxis();
