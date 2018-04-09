@@ -4,92 +4,140 @@ import java.util.List;
 
 public class SongBean {
 
+
     /**
-     * data : {"label":"UK Singles Top 75","chartid":"uk_singles_top_75","data":[[1517180400000,100,1],[1517785200000,100,1],[1518390000000,100,1],[1518994800000,100,1],[1519599600000,100,1],[1520204400000,100,1],[1520809200000,100,1],[1521414000000,100,1],[1522015200000,100,1]]}
-     * feedback : {"text":"<i>UK Singles Top 75<\/i> is added to the graph below.","url":"","image":""}
-     * status : {"status_code":200,"success":true}
-     * analytics : {"send_event":true,"event_category":"performance-graph","event_action":"automatic_first","event_label":"added"}
+     * resource : {"title":"Love Story","singers":[{"info":"Taylor Alison Swift (born December 13, 1989 in Wyomissing, Pennsylvania) is an American country pop singer-songwriter and actress.  In 2006, she released her debut single \"Tim McGraw\", then her self-titled debut album, which was subsequently certified multi-platinum by the Recording Industry Association of America. In November 2008, Swift released her second album, Fearless. Fearless and Taylor Swift finished 2008 at number-three and number-six respectively, with sales of 2.1 and 1.5 million. Fearless has topped the Billboard 200 in 11 non-consecutive weeks; no album has spent more time at No. Read more about Taylor Swift on Last.fm .","type":"Female","born":"1989-12-13","area":"United States","image":"https://draw.acharts.net/artist/taylor_swift-54661b9acd1f9-l.png","id":1710,"name":"Taylor Swift"}],"ranks":[49,46,46,42,40,41,38,33,29,26,26,28,34,24,21,18,18,16,14,14,15,13,13,12,9,8,7,7,5,5,5,5,4,5,7,11,12,12,14,18,14,16,15,14,14,13,9,5,16],"id":37722}
      */
 
-    private DataBean data;
-    private FeedbackBean feedback;
-    private StatusBean status;
-    private AnalyticsBean analytics;
+    private ResourceBean resource;
 
-    public DataBean getData() {
-        return data;
+    public ResourceBean getResource() {
+        return resource;
     }
 
-    public void setData(DataBean data) {
-        this.data = data;
+    public void setResource(ResourceBean resource) {
+        this.resource = resource;
     }
 
-    public FeedbackBean getFeedback() {
-        return feedback;
-    }
-
-    public void setFeedback(FeedbackBean feedback) {
-        this.feedback = feedback;
-    }
-
-    public StatusBean getStatus() {
-        return status;
-    }
-
-    public void setStatus(StatusBean status) {
-        this.status = status;
-    }
-
-    public AnalyticsBean getAnalytics() {
-        return analytics;
-    }
-
-    public void setAnalytics(AnalyticsBean analytics) {
-        this.analytics = analytics;
-    }
-
-    public static class DataBean {
+    public static class ResourceBean {
         /**
-         * label : UK Singles Top 75
-         * chartid : uk_singles_top_75
-         * data : [[1517180400000,100,1],[1517785200000,100,1],[1518390000000,100,1],[1518994800000,100,1],[1519599600000,100,1],[1520204400000,100,1],[1520809200000,100,1],[1521414000000,100,1],[1522015200000,100,1]]
+         * title : Love Story
+         * singers : [{"info":"Taylor Alison Swift (born December 13, 1989 in Wyomissing, Pennsylvania) is an American country pop singer-songwriter and actress.  In 2006, she released her debut single \"Tim McGraw\", then her self-titled debut album, which was subsequently certified multi-platinum by the Recording Industry Association of America. In November 2008, Swift released her second album, Fearless. Fearless and Taylor Swift finished 2008 at number-three and number-six respectively, with sales of 2.1 and 1.5 million. Fearless has topped the Billboard 200 in 11 non-consecutive weeks; no album has spent more time at No. Read more about Taylor Swift on Last.fm .","type":"Female","born":"1989-12-13","area":"United States","image":"https://draw.acharts.net/artist/taylor_swift-54661b9acd1f9-l.png","id":1710,"name":"Taylor Swift"}]
+         * ranks : [49,46,46,42,40,41,38,33,29,26,26,28,34,24,21,18,18,16,14,14,15,13,13,12,9,8,7,7,5,5,5,5,4,5,7,11,12,12,14,18,14,16,15,14,14,13,9,5,16]
+         * id : 37722
          */
 
-        private String label;
-        private String chartid;
-        private List<List<Double>> data;
+        private String title;
+        private int id;
+        private List<SingersBean> singers;
+        private List<Integer> ranks;
 
-        public String getLabel() {
-            return label;
+        public String getTitle() {
+            return title;
         }
 
-        public void setLabel(String label) {
-            this.label = label;
+        public void setTitle(String title) {
+            this.title = title;
         }
 
-        public String getChartid() {
-            return chartid;
+        public int getId() {
+            return id;
         }
 
-        public void setChartid(String chartid) {
-            this.chartid = chartid;
+        public void setId(int id) {
+            this.id = id;
         }
 
-        public List<List<Double>> getData() {
-            return data;
+        public List<SingersBean> getSingers() {
+            return singers;
         }
 
-        public void setData(List<List<Double>> data) {
-            this.data = data;
+        public void setSingers(List<SingersBean> singers) {
+            this.singers = singers;
         }
-    }
 
-    public static class FeedbackBean {
-    }
+        public List<Integer> getRanks() {
+            return ranks;
+        }
 
-    public static class StatusBean {
-    }
+        public void setRanks(List<Integer> ranks) {
+            this.ranks = ranks;
+        }
 
-    public static class AnalyticsBean {
+        public static class SingersBean {
+            /**
+             * info : Taylor Alison Swift (born December 13, 1989 in Wyomissing, Pennsylvania) is an American country pop singer-songwriter and actress.  In 2006, she released her debut single "Tim McGraw", then her self-titled debut album, which was subsequently certified multi-platinum by the Recording Industry Association of America. In November 2008, Swift released her second album, Fearless. Fearless and Taylor Swift finished 2008 at number-three and number-six respectively, with sales of 2.1 and 1.5 million. Fearless has topped the Billboard 200 in 11 non-consecutive weeks; no album has spent more time at No. Read more about Taylor Swift on Last.fm .
+             * type : Female
+             * born : 1989-12-13
+             * area : United States
+             * image : https://draw.acharts.net/artist/taylor_swift-54661b9acd1f9-l.png
+             * id : 1710
+             * name : Taylor Swift
+             */
+
+            private String info;
+            private String type;
+            private String born;
+            private String area;
+            private String image;
+            private int id;
+            private String name;
+
+            public String getInfo() {
+                return info;
+            }
+
+            public void setInfo(String info) {
+                this.info = info;
+            }
+
+            public String getType() {
+                return type;
+            }
+
+            public void setType(String type) {
+                this.type = type;
+            }
+
+            public String getBorn() {
+                return born;
+            }
+
+            public void setBorn(String born) {
+                this.born = born;
+            }
+
+            public String getArea() {
+                return area;
+            }
+
+            public void setArea(String area) {
+                this.area = area;
+            }
+
+            public String getImage() {
+                return image;
+            }
+
+            public void setImage(String image) {
+                this.image = image;
+            }
+
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
+            }
+        }
     }
 }

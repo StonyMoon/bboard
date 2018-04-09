@@ -27,7 +27,7 @@ public class SongDashboardPresenter implements SongDashboardContract.Presenter {
     public void showRank() {
         RankService rankService = BaseDataManager.getHttpManager().create(RankService.class);
         mView.showProgressBar(true);
-        rankService.getRank(mSongId, "uk_singles_top_75", "automatic_first")
+        rankService.getRank(mSongId)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<SongBean>() {
@@ -45,7 +45,7 @@ public class SongDashboardPresenter implements SongDashboardContract.Presenter {
                     @Override
                     public void onNext(SongBean songBean) {
                         mView.showProgressBar(false);
-                        mView.showChart(songBean.getData().getData());
+                        mView.showChart(songBean.getResource().getRanks());
                     }
                 });
     }

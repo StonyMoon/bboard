@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface SongDashboardContract {
     interface View extends BaseView<Presenter> {
-        void showChart(List<List<Double>> list);
+        void showChart(List<Integer> list);
 
         void showError();
 

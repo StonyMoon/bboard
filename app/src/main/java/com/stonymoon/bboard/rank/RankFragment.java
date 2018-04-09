@@ -66,7 +66,7 @@ public class RankFragment extends Fragment implements RankContract.View {
 
         View root = inflater.inflate(R.layout.fragment_rank, container, false);
         mUnbinder = ButterKnife.bind(this, root);
-        mAdapter = new RankAdapter(new ArrayList<RankBean>());
+        mAdapter = new RankAdapter(new ArrayList<RankBean.ResourceBean>());
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         return root;
@@ -80,7 +80,7 @@ public class RankFragment extends Fragment implements RankContract.View {
     }
 
     @Override
-    public void showList(List<RankBean> list) {
+    public void showList(List<RankBean.ResourceBean> list) {
         mAdapter.setData(list);
     }
 

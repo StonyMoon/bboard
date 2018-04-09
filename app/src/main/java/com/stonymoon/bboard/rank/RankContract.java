@@ -11,7 +11,7 @@ public interface RankContract {
     interface View extends BaseView<Presenter> {
         void showProgressBar(boolean show);
 
-        void showList(List<RankBean> list);
+        void showList(List<RankBean.ResourceBean> list);
 
         void showError();
 

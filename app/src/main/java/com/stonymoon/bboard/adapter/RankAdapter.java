@@ -14,19 +14,21 @@ import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.bean.RankBean;
 import com.stonymoon.bboard.songdashboard.SongDashboardActivity;
 
+import static com.stonymoon.bboard.bean.RankBean.ResourceBean;
+
 import java.util.List;
 
 
 public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ItunesViewHolder> {
 
-    private List<RankBean> mRankList;
+    private List<ResourceBean> mRankList;
     private Context mContext;
 
-    public RankAdapter(List<RankBean> s) {
+    public RankAdapter(List<ResourceBean> s) {
         mRankList = s;
     }
 
-    public void setData(List<RankBean> list) {
+    public void setData(List<ResourceBean> list) {
         this.mRankList = list;
         notifyDataSetChanged();
     }
@@ -41,8 +43,8 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ItunesViewHold
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
-                RankBean b = mRankList.get(position);
-                SongDashboardActivity.startActivity(mContext, b.getId() + "");
+                ResourceBean b = mRankList.get(position);
+                SongDashboardActivity.startActivity(mContext, b.getSong().getId() + "");
 
             }
         });
@@ -58,22 +60,24 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ItunesViewHold
     }
 
     public void onBindViewHolder(ItunesViewHolder holder, int position) {
-        RankBean RankBean = mRankList.get(position);
-        holder.rankText.setText(RankBean.getRank() + "");
-        holder.authorText.setText(RankBean.getAuthor());
-        holder.titleText.setText(RankBean.getName());
-        if (RankBean.getLastWeek() > RankBean.getRank()) {
+        ResourceBean bean = mRankList.get(position);
+        holder.rankText.setText(bean.getRank() + "");
+        List<String> singers = bean.getSong().getSingers();
+        //check null,if null then set empty string
+        holder.authorText.setText((singers == null || singers.get(0) == null) ? "" : singers.get(0));
+        holder.titleText.setText(bean.getSong().getTitle());
+        if (bean.getPrevious() > bean.getRank()) {
             holder.rankImage.setImageResource(R.mipmap.up_arrow);
-        } else if (RankBean.getLastWeek() == RankBean.getRank()) {
+        } else if (bean.getPrevious() == bean.getRank()) {
             holder.rankImage.setImageResource(R.mipmap.line);
 
         } else {
             holder.rankImage.setImageResource(R.mipmap.down_arrow);
         }
-        if (RankBean.getLastWeek() == 101) {
+        if (bean.getPrevious() == 0) {
             holder.lastWeekText.setText("new");
         } else {
-            holder.lastWeekText.setText("" + Math.abs(RankBean.getLastWeek() - RankBean.getRank()));
+            holder.lastWeekText.setText("" + Math.abs(bean.getPrevious() - bean.getRank()));
         }
 
     }

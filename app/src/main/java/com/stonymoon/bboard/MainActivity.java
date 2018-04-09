@@ -24,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
                 RankActivity.startActivity(this);
                 break;
             case R.id.btn_main_song_dashboard:
+
                 break;
             case R.id.btn_main_search:
                 SearchActivity.startActivity(this);

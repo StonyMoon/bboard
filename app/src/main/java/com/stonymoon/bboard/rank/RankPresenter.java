@@ -4,6 +4,7 @@ import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.RankService;
 import com.stonymoon.bboard.bean.RankBean;
 
+import java.util.Date;
 import java.util.List;
 
 import rx.Subscriber;
@@ -24,10 +25,10 @@ public class RankPresenter implements RankContract.Presenter {
     public void start() {
         mRankView.showProgressBar(true);
         RankService service = BaseDataManager.getHttpManager().create(RankService.class);
-        service.getUK()
+        service.getBillBoard("2018-3-3")
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
-                .subscribe(new Subscriber<List>() {
+                .subscribe(new Subscriber<RankBean>() {
                     @Override
                     public void onCompleted() {
                     }
@@ -39,8 +40,10 @@ public class RankPresenter implements RankContract.Presenter {
                     }
 
                     @Override
-                    public void onNext(List response) {
-                        mRankView.showList((List<RankBean>) response);
+                    public void onNext(RankBean response) {
+                        mRankView.showList(response.getResource());
+                        mRankView.showProgressBar(false);
+
                     }
                 });
 

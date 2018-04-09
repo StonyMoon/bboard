@@ -61,10 +61,10 @@ public class SongDashboardFragment extends Fragment implements SongDashboardCont
     }
 
     @Override
-    public void showChart(List<List<Double>> data) {
+    public void showChart(List<Integer> data) {
         int size = data.size();
         for (int i = 0; i < size; i++) {
-            entries.add(new Entry(i + 1, (float) -data.get(i).get(2)));
+            entries.add(new Entry(i + 1, (float) -data.get(i)));
         }
         LineDataSet dataSet = new LineDataSet(entries, getString(R.string.chart_name));
         dataSet.setHighLightColor(Color.TRANSPARENT);
