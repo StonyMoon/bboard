@@ -28,7 +28,7 @@ public class ItunesPresenter implements ItunesContract.Presenter {
     }
 
     public void loadItunes() {
-        mItunesView.showLoading();
+        mItunesView.showProgressBar(true);
         ItunesService service = BaseDataManager.getHttpManager().create(ItunesService.class);
         service.getManagerData()
                 .observeOn(AndroidSchedulers.mainThread())
@@ -41,14 +41,15 @@ public class ItunesPresenter implements ItunesContract.Presenter {
 
                     @Override
                     public void onError(Throwable e) {
-                        mItunesView.showLoadFail();
+                        mItunesView.showProgressBar(false);
+                        mItunesView.showError();
                     }
 
                     @Override
                     public void onNext(ItunesBean itunesBean) {
                         mList.addAll(itunesBean.getSongs());
                         mItunesView.showItunesList(mList);
-                        mItunesView.showLoadingSuccess();
+                        mItunesView.showProgressBar(false);
                     }
                 });
 

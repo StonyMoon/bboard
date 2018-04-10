@@ -16,7 +16,7 @@ public class RankPresenter implements RankContract.Presenter {
     private RankContract.View mRankView;
 
 
-    public RankPresenter(RankContract.View view) {
+    RankPresenter(RankContract.View view) {
         this.mRankView = view;
     }
 

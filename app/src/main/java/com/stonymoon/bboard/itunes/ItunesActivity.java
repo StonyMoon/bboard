@@ -76,20 +76,13 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
     }
 
     @Override
-    public void showLoadFail() {
-        pbItunes.setVisibility(View.GONE);
+    public void showError() {
         Toast.makeText(ItunesActivity.this, "加载失败", Toast.LENGTH_SHORT).show();
-
     }
 
     @Override
-    public void showLoading() {
-        pbItunes.setVisibility(View.VISIBLE);
-    }
-
-    @Override
-    public void showLoadingSuccess() {
-        pbItunes.setVisibility(View.GONE);
+    public void showProgressBar(boolean show) {
+        pbItunes.setVisibility(show ? View.VISIBLE : View.GONE);
     }
 
     @Override

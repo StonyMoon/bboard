@@ -1,20 +1,19 @@
-package com.stonymoon.bboard.songdashboard;
+package com.stonymoon.bboard.singer;
 
 import com.stonymoon.bboard.base.BasePresenter;
 import com.stonymoon.bboard.base.LoadingBaseView;
+import com.stonymoon.bboard.bean.SingerBean;
 
-
-import java.util.List;
-
-public interface SongDashboardContract {
+public interface SingerContract {
     interface View extends LoadingBaseView<Presenter> {
-        void showChart(List<Integer> list);
+        void showInfo(SingerBean bean);
 
     }
 
     interface Presenter extends BasePresenter {
-        void showRank();
+
 
     }
+
 
 }

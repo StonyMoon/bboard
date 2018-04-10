@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.adapter.RankAdapter;
@@ -29,6 +30,7 @@ public class RankFragment extends Fragment implements RankContract.View {
     ProgressBar mProgressBar;
     @BindView(R.id.recycler_rank)
     RecyclerView mRecyclerView;
+
     private RankContract.Presenter mPresenter;
     private RankAdapter mAdapter;
     private Unbinder mUnbinder;
