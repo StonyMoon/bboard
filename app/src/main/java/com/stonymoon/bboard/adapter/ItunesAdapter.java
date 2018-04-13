@@ -11,21 +11,22 @@ import android.widget.TextView;
 
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.bean.ItunesBean;
+import com.stonymoon.bboard.bean.ItunesSong;
 
 import java.util.List;
 
 
 public class ItunesAdapter extends RecyclerView.Adapter<ItunesAdapter.ItunesViewHolder> {
 
-    private List<ItunesBean.Song> mSongs;
+    private List<ItunesSong> mSongs;
     private Context mContext;
 
-    public ItunesAdapter(List<ItunesBean.Song> songs) {
+    public ItunesAdapter(List<ItunesSong> songs) {
         mSongs = songs;
     }
 
 
-    public void setData(List<ItunesBean.Song> songs) {
+    public void setData(List<ItunesSong> songs) {
         mSongs = songs;
         notifyDataSetChanged();
     }
@@ -48,7 +49,7 @@ public class ItunesAdapter extends RecyclerView.Adapter<ItunesAdapter.ItunesView
     }
 
     public void onBindViewHolder(ItunesViewHolder holder, int position) {
-        ItunesBean.Song song = mSongs.get(position);
+        ItunesSong song = mSongs.get(position);
         holder.tvTitle.setText(song.getTitle());
         String point = String.format("%.2f", song.getNowPoint());
         holder.tvPoint.setText(point);

@@ -14,6 +14,7 @@ import android.widget.Toast;
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.adapter.ItunesAdapter;
 import com.stonymoon.bboard.bean.ItunesBean;
+import com.stonymoon.bboard.bean.ItunesSong;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,7 +45,7 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itunes);
         ButterKnife.bind(this);
-        mListAdapter = new ItunesAdapter(new ArrayList<ItunesBean.Song>(0));
+        mListAdapter = new ItunesAdapter(new ArrayList<ItunesSong>(0));
         recyclerItunes.setLayoutManager(new LinearLayoutManager(this));
         recyclerItunes.setAdapter(mListAdapter);
         DaggerItunesComponent.builder()
@@ -60,7 +61,7 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
     }
 
     @Override
-    public void showItunesList(final List<ItunesBean.Song> list) {
+    public void showItunesList(final List<ItunesSong> list) {
         mListAdapter.setData(list);
 
     }

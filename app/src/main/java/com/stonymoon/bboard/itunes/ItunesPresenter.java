@@ -4,6 +4,7 @@ package com.stonymoon.bboard.itunes;
 import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.ItunesService;
 import com.stonymoon.bboard.bean.ItunesBean;
+import com.stonymoon.bboard.bean.ItunesSong;
 
 
 import java.util.ArrayList;
@@ -18,7 +19,7 @@ import rx.schedulers.Schedulers;
 
 public class ItunesPresenter implements ItunesContract.Presenter {
     private final ItunesContract.View mItunesView;
-    private List<ItunesBean.Song> mList = new ArrayList<>();
+    private List<ItunesSong> mList = new ArrayList<>();
 
     @Inject
     public ItunesPresenter(ItunesContract.View itunesActivity) {

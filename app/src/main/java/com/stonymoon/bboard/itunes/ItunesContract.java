@@ -4,6 +4,7 @@ import com.stonymoon.bboard.base.BasePresenter;
 import com.stonymoon.bboard.base.BaseView;
 import com.stonymoon.bboard.base.LoadingBaseView;
 import com.stonymoon.bboard.bean.ItunesBean;
+import com.stonymoon.bboard.bean.ItunesSong;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface ItunesContract {
 
         void setTitle(String title);
 
-        void showItunesList(List<ItunesBean.Song> list);
+        void showItunesList(List<ItunesSong> list);
 
         boolean isActive();
 
