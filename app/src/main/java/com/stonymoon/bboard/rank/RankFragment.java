@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.adapter.RankAdapter;
+import com.stonymoon.bboard.base.ToolbarBaseFragment;
 import com.stonymoon.bboard.bean.RankBean;
 import com.stonymoon.bboard.util.ToastUtil;
 
@@ -25,7 +26,7 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class RankFragment extends Fragment implements RankContract.View {
+public class RankFragment extends ToolbarBaseFragment implements RankContract.View {
     @BindView(R.id.pb_rank)
     ProgressBar mProgressBar;
     @BindView(R.id.recycler_rank)
