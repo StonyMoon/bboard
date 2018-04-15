@@ -33,7 +33,7 @@ public class ItunesSongDao extends AbstractDao<ItunesSong, Void> {
      * Creates the underlying database table.
      */
     public static void createTable(Database db, boolean ifNotExists) {
-        String constraint = ifNotExists ? "IF NOT EXISTS " : "";
+        String constraint = ifNotExists ? "IF NOT EXISTS ": "";
         db.execSQL("CREATE TABLE " + constraint + "\"ITUNES_SONG\" (" + //
                 "\"NOW_COLOR\" TEXT," + // 0: nowColor
                 "\"POSITION\" INTEGER NOT NULL ," + // 1: position
@@ -42,9 +42,7 @@ public class ItunesSongDao extends AbstractDao<ItunesSong, Void> {
                 "\"TITLE\" TEXT);"); // 4: title
     }
 
-    /**
-     * Drops the underlying database table.
-     */
+    /** Drops the underlying database table. */
     public static void dropTable(Database db, boolean ifExists) {
         String sql = "DROP TABLE " + (ifExists ? "IF EXISTS " : "") + "\"ITUNES_SONG\"";
         db.execSQL(sql);
@@ -110,19 +108,19 @@ public class ItunesSongDao extends AbstractDao<ItunesSong, Void> {
         entity.setNowPoint(cursor.getDouble(offset + 2));
         entity.setDiscounted(cursor.getInt(offset + 3));
         entity.setTitle(cursor.isNull(offset + 4) ? null : cursor.getString(offset + 4));
-    }
-
+     }
+     
     @Override
     protected final Void updateKeyAfterInsert(ItunesSong entity, long rowId) {
         // Unsupported or missing PK type
         return null;
     }
-
+    
     @Override
     public Void getKey(ItunesSong entity) {
         return null;
     }
-
+    
     @Override
     public boolean hasKey(ItunesSong entity) {
         // TODO
@@ -145,5 +143,5 @@ public class ItunesSongDao extends AbstractDao<ItunesSong, Void> {
         public final static Property Discounted = new Property(3, int.class, "discounted", false, "DISCOUNTED");
         public final static Property Title = new Property(4, String.class, "title", false, "TITLE");
     }
-
+    
 }

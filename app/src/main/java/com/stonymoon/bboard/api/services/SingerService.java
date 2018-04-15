@@ -8,7 +8,7 @@ import rx.Observable;
 
 
 public interface SingerService {
-    @GET("/singer/profile/{id}")
+    @GET("/singer/songs/{id}")
     Observable<SingerBean> getSinger(@Path("id") int id);
 
 }

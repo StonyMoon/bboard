@@ -16,7 +16,7 @@ import com.stonymoon.bboard.dao.ItunesSongDao;
 
 /**
  * {@inheritDoc}
- *
+ * 
  * @see org.greenrobot.greendao.AbstractDaoSession
  */
 public class DaoSession extends AbstractDaoSession {

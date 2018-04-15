@@ -4,17 +4,26 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AbsListView;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.stonymoon.bboard.R;
+import com.stonymoon.bboard.adapter.SearchAdapter;
+import com.stonymoon.bboard.adapter.SingerSongAdapter;
+import com.stonymoon.bboard.bean.SearchBean;
 import com.stonymoon.bboard.bean.SingerBean;
 import com.stonymoon.bboard.util.ToastUtil;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -37,12 +46,17 @@ public class SingerFragment extends Fragment implements SingerContract.View {
     TextView tvType;
     @BindView(R.id.iv_singer_avatar)
     ImageView ivAvatar;
+    @BindView(R.id.iv_singer_bg)
+    ImageView ivBackground;
+
+    @BindView(R.id.recycler_singer_songs)
+    RecyclerView recyclerSongs;
 
 
     private Unbinder mUnbinder;
     private SingerContract.Presenter mPresenter;
     private Context mContext;
-
+    private SingerSongAdapter adapter = new SingerSongAdapter(new ArrayList<SingerBean.ResourceBean.SongsBean>());
 
     public SingerFragment() {
 
@@ -84,6 +98,11 @@ public class SingerFragment extends Fragment implements SingerContract.View {
         Glide.with(mContext)
                 .load(singer.getImage())
                 .into(ivAvatar);
+        Glide.with(mContext)
+                .load(singer.getImage())
+                .into(ivBackground);
+        adapter.setData(bean.getResource().getSongs());
+
 
     }
 
@@ -92,9 +111,9 @@ public class SingerFragment extends Fragment implements SingerContract.View {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_singer, container, false);
         mUnbinder = ButterKnife.bind(this, root);
-
+        recyclerSongs.setAdapter(adapter);
+        recyclerSongs.setLayoutManager(new LinearLayoutManager(mContext));
         mPresenter.start();
-
         return root;
     }
 

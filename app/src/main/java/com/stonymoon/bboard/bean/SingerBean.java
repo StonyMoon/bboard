@@ -1,12 +1,9 @@
 package com.stonymoon.bboard.bean;
 
 
+import java.util.List;
+
 public class SingerBean {
-
-
-    /**
-     * resource : {"name":"2pac","info":"Tupac Amaru Shakur (June 16, 1971\u2013September 13, 1996), also known by his stage names, Makaveli and 2Pac, was an American hip-hop artist, poet and actor. He is listed in the Guinness Book of World Records as the best-selling rap/hip-hop artist ever, having sold over 75 million albums worldwide, including 44.5 million sales in the United States alone. He has had 17 top ten singles in the United States. Read more about 2Pac on Last.fm .","area":"United States","image":"https://draw.acharts.net/artist/2pac-54661e84acf7a-l.jpeg","id":6,"type":"Male","born":"1971-6-16"}
-     */
 
     private ResourceBean resource;
 
@@ -19,16 +16,6 @@ public class SingerBean {
     }
 
     public static class ResourceBean {
-        /**
-         * name : 2pac
-         * info : Tupac Amaru Shakur (June 16, 1971–September 13, 1996), also known by his stage names, Makaveli and 2Pac, was an American hip-hop artist, poet and actor. He is listed in the Guinness Book of World Records as the best-selling rap/hip-hop artist ever, having sold over 75 million albums worldwide, including 44.5 million sales in the United States alone. He has had 17 top ten singles in the United States. Read more about 2Pac on Last.fm .
-         * area : United States
-         * image : https://draw.acharts.net/artist/2pac-54661e84acf7a-l.jpeg
-         * id : 6
-         * type : Male
-         * born : 1971-6-16
-         */
-
         private String name;
         private String info;
         private String area;
@@ -36,6 +23,7 @@ public class SingerBean {
         private int id;
         private String type;
         private String born;
+        private List<SongsBean> songs;
 
         public String getName() {
             return name;
@@ -91,6 +79,40 @@ public class SingerBean {
 
         public void setBorn(String born) {
             this.born = born;
+        }
+
+        public List<SongsBean> getSongs() {
+            return songs;
+        }
+
+        public void setSongs(List<SongsBean> songs) {
+            this.songs = songs;
+        }
+
+        public static class SongsBean {
+            /**
+             * id : 43864
+             * title : Mad World
+             */
+
+            private int id;
+            private String title;
+
+            public int getId() {
+                return id;
+            }
+
+            public void setId(int id) {
+                this.id = id;
+            }
+
+            public String getTitle() {
+                return title;
+            }
+
+            public void setTitle(String title) {
+                this.title = title;
+            }
         }
     }
 }
