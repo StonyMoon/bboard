@@ -4,8 +4,6 @@ package com.stonymoon.bboard.api.services;
 import com.stonymoon.bboard.bean.RankBean;
 import com.stonymoon.bboard.bean.SongBean;
 
-import java.util.Date;
-import java.util.List;
 
 
 import retrofit2.http.GET;

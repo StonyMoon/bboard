@@ -23,7 +23,8 @@
         <activity android:name=".rank.RankActivity" />
         <activity android:name=".songdashboard.SongDashboardActivity" />
         <activity android:name=".search.SearchActivity" />
-        <activity android:name=".singer.SingerActivity"></activity>
+        <activity android:name=".singer.SingerActivity" />
+        <activity android:name=".maindashboard.MainDashboardActivity"></activity>
     </application>
 
 </manifest>

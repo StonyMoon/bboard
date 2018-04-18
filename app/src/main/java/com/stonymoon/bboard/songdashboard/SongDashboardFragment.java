@@ -83,7 +83,7 @@ public class SongDashboardFragment extends Fragment implements SongDashboardCont
 
         LineData lineData = new LineData(dataSet);
         mChart.setScaleYEnabled(false);
-        mChart.setNoDataText("");
+
 
         // 自定义X轴样式
         XAxis xAxis = mChart.getXAxis();
@@ -142,6 +142,7 @@ public class SongDashboardFragment extends Fragment implements SongDashboardCont
         View root = inflater.inflate(R.layout.fragment_song_dashboard, container, false);
         mUnbinder = ButterKnife.bind(this, root);
         mPresenter.showRank();
+        mChart.setNoDataText("");
         return root;
     }
 
