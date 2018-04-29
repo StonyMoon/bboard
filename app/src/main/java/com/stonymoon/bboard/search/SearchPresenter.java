@@ -2,6 +2,7 @@ package com.stonymoon.bboard.search;
 
 
 import com.stonymoon.bboard.api.BaseDataManager;
+import com.stonymoon.bboard.api.services.BillboardService;
 import com.stonymoon.bboard.api.services.SearchService;
 import com.stonymoon.bboard.bean.SearchBean;
 
@@ -26,8 +27,8 @@ public class SearchPresenter implements SearchContract.Presenter {
     @Override
     public void search(String songName) {
         mView.showProgressBar(true);
-        SearchService service = BaseDataManager.getHttpManager().create(SearchService.class);
-        service.search(songName)
+        BillboardService service = BaseDataManager.getHttpManager().create(BillboardService.class);
+        service.searchSong(songName)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<SearchBean>() {

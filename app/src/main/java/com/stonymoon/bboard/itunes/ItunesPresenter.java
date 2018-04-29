@@ -30,7 +30,9 @@ public class ItunesPresenter implements ItunesContract.Presenter {
 
     public void loadItunes() {
         mItunesView.showProgressBar(true);
-        ItunesService service = BaseDataManager.getHttpManager().create(ItunesService.class);
+        ItunesService service = BaseDataManager
+                .getHttpManager()
+                .create(ItunesService.class);
         service.getManagerData()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

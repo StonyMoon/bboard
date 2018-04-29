@@ -2,6 +2,7 @@ package com.stonymoon.bboard.singer;
 
 
 import com.stonymoon.bboard.api.BaseDataManager;
+import com.stonymoon.bboard.api.services.BillboardService;
 import com.stonymoon.bboard.api.services.SingerService;
 import com.stonymoon.bboard.bean.SingerBean;
 
@@ -19,7 +20,7 @@ public class SingerPresenter implements SingerContract.Presenter {
     public void start() {
         mView.showProgressBar(true);
         BaseDataManager.getHttpManager()
-                .create(SingerService.class)
+                .create(BillboardService.class)
                 .getSinger(6)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())

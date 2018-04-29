@@ -2,6 +2,7 @@ package com.stonymoon.bboard.songdashboard;
 
 
 import com.stonymoon.bboard.api.BaseDataManager;
+import com.stonymoon.bboard.api.services.BillboardService;
 import com.stonymoon.bboard.api.services.RankService;
 import com.stonymoon.bboard.bean.SongBean;
 
@@ -25,7 +26,7 @@ public class SongDashboardPresenter implements SongDashboardContract.Presenter {
 
     @Override
     public void showRank() {
-        RankService rankService = BaseDataManager.getHttpManager().create(RankService.class);
+        BillboardService rankService = BaseDataManager.getHttpManager().create(BillboardService.class);
         mView.showProgressBar(true);
         rankService.getRank(mSongId)
                 .observeOn(AndroidSchedulers.mainThread())

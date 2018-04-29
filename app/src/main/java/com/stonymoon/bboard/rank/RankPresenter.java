@@ -1,6 +1,7 @@
 package com.stonymoon.bboard.rank;
 
 import com.stonymoon.bboard.api.BaseDataManager;
+import com.stonymoon.bboard.api.services.BillboardService;
 import com.stonymoon.bboard.api.services.RankService;
 import com.stonymoon.bboard.bean.RankBean;
 
@@ -24,7 +25,7 @@ public class RankPresenter implements RankContract.Presenter {
     @Override
     public void start() {
         mRankView.showProgressBar(true);
-        RankService service = BaseDataManager.getHttpManager().create(RankService.class);
+        BillboardService service = BaseDataManager.getHttpManager().create(BillboardService.class);
         service.getBillBoard("2018-3-3")
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
