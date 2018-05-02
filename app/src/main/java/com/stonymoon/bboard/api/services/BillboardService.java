@@ -13,7 +13,6 @@ public interface BillboardService {
     @GET("/billboard/{date}")
     Observable<RankBean> getBillBoard(@Path("date") String date);
 
-
     @GET("/song/{id}")
     Observable<SongBean> getRank(@Path("id") String id);
 
@@ -23,4 +22,11 @@ public interface BillboardService {
     @GET("/singer/songs/{id}")
     Observable<SingerBean> getSinger(@Path("id") int id);
 
+
+    @GET("/search/singer/born/{date}")
+    Observable<SingerBean> getSingerByBorn(@Path("date") String date);
+
+    // 这个API不一定会被用到
+    @GET("/search/singer/{text}")
+    Observable<SingerBean> searchSinger(@Path("text") String text);
 }

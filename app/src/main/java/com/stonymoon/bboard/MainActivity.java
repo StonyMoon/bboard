@@ -16,7 +16,7 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity {
 
 
-    @OnClick({R.id.btn_main_itunes, R.id.btn_main_rank, R.id.btn_main_song_dashboard, R.id.btn_main_search, R.id.btn_main_singer})
+    @OnClick({R.id.btn_main_itunes, R.id.btn_main_rank, R.id.btn_main_song_dashboard, R.id.btn_main_singer, R.id.iv_main_search})
     void onButtonClick(View view) {
         switch (view.getId()) {
             case R.id.btn_main_itunes:
@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
             case R.id.btn_main_song_dashboard:
                 MainDashboardActivity.startActivity(this);
                 break;
-            case R.id.btn_main_search:
+            case R.id.iv_main_search:
                 SearchActivity.startActivity(this);
                 break;
             case R.id.btn_main_singer:

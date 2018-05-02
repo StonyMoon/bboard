@@ -2,11 +2,8 @@ package com.stonymoon.bboard.rank;
 
 import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.BillboardService;
-import com.stonymoon.bboard.api.services.RankService;
 import com.stonymoon.bboard.bean.RankBean;
 
-import java.util.Date;
-import java.util.List;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;

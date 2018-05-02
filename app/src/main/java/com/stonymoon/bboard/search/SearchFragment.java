@@ -6,12 +6,17 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.EditorInfo;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.adapter.SearchAdapter;
@@ -25,6 +30,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
+import static android.content.Context.INPUT_METHOD_SERVICE;
+
 
 public class SearchFragment extends Fragment implements SearchContract.View {
 
@@ -34,8 +41,8 @@ public class SearchFragment extends Fragment implements SearchContract.View {
     RecyclerView mRecyclerView;
     @BindView(R.id.et_search)
     EditText etSearch;
-    @BindView(R.id.btn_search)
-    Button btnSearch;
+    @BindView(R.id.iv_search)
+    ImageView ivSearch;
 
 
     private Unbinder mUnbinder;
@@ -97,12 +104,27 @@ public class SearchFragment extends Fragment implements SearchContract.View {
         mAdapter = new SearchAdapter(new ArrayList<SearchBean.ResourceBean>());
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
-        btnSearch.setOnClickListener(new View.OnClickListener() {
+        ivSearch.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 mPresenter.search(etSearch.getText().toString());
             }
         });
+
+        etSearch.setImeOptions(EditorInfo.IME_ACTION_SEARCH);
+        etSearch.setInputType(EditorInfo.TYPE_CLASS_TEXT);
+        etSearch.setOnEditorActionListener(new TextView.OnEditorActionListener() {
+            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
+                if (actionId == EditorInfo.IME_ACTION_SEND || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
+                    mPresenter.search(etSearch.getText().toString());
+                    InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
+                    imm.hideSoftInputFromWindow(etSearch.getWindowToken(), 0);
+                    return true;
+                }
+                return false;
+            }
+        });
+
 
 
         return root;

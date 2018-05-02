@@ -3,7 +3,6 @@ package com.stonymoon.bboard.singer;
 
 import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.BillboardService;
-import com.stonymoon.bboard.api.services.SingerService;
 import com.stonymoon.bboard.bean.SingerBean;
 
 import rx.Subscriber;

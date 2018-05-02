@@ -3,7 +3,6 @@ package com.stonymoon.bboard.search;
 
 import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.BillboardService;
-import com.stonymoon.bboard.api.services.SearchService;
 import com.stonymoon.bboard.bean.SearchBean;
 
 

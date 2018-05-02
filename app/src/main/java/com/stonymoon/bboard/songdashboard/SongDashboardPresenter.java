@@ -3,7 +3,6 @@ package com.stonymoon.bboard.songdashboard;
 
 import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.BillboardService;
-import com.stonymoon.bboard.api.services.RankService;
 import com.stonymoon.bboard.bean.SongBean;
 
 import rx.Subscriber;
