@@ -2,9 +2,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.stonymoon.bboard.rank.RankFragment">
+    tools:context="com.stonymoon.bboard.rank.RankFragment"
+    android:padding="8dp"
+    >
 
     <include layout="@layout/base_toolbar" />
+
     <ProgressBar
         android:id="@+id/pb_rank"
         android:layout_width="wrap_content"

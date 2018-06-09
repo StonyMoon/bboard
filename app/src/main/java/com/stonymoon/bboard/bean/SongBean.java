@@ -4,11 +4,6 @@ import java.util.List;
 
 public class SongBean {
 
-
-    /**
-     * resource : {"title":"Love Story","singers":[{"info":"Taylor Alison Swift (born December 13, 1989 in Wyomissing, Pennsylvania) is an American country pop singer-songwriter and actress.  In 2006, she released her debut single \"Tim McGraw\", then her self-titled debut album, which was subsequently certified multi-platinum by the Recording Industry Association of America. In November 2008, Swift released her second album, Fearless. Fearless and Taylor Swift finished 2008 at number-three and number-six respectively, with sales of 2.1 and 1.5 million. Fearless has topped the Billboard 200 in 11 non-consecutive weeks; no album has spent more time at No. Read more about Taylor Swift on Last.fm .","type":"Female","born":"1989-12-13","area":"United States","image":"https://draw.acharts.net/artist/taylor_swift-54661b9acd1f9-l.png","id":1710,"name":"Taylor Swift"}],"ranks":[49,46,46,42,40,41,38,33,29,26,26,28,34,24,21,18,18,16,14,14,15,13,13,12,9,8,7,7,5,5,5,5,4,5,7,11,12,12,14,18,14,16,15,14,14,13,9,5,16],"id":37722}
-     */
-
     private ResourceBean resource;
 
     public ResourceBean getResource() {
@@ -20,12 +15,12 @@ public class SongBean {
     }
 
     public static class ResourceBean {
-        /**
-         * title : Love Story
-         * singers : [{"info":"Taylor Alison Swift (born December 13, 1989 in Wyomissing, Pennsylvania) is an American country pop singer-songwriter and actress.  In 2006, she released her debut single \"Tim McGraw\", then her self-titled debut album, which was subsequently certified multi-platinum by the Recording Industry Association of America. In November 2008, Swift released her second album, Fearless. Fearless and Taylor Swift finished 2008 at number-three and number-six respectively, with sales of 2.1 and 1.5 million. Fearless has topped the Billboard 200 in 11 non-consecutive weeks; no album has spent more time at No. Read more about Taylor Swift on Last.fm .","type":"Female","born":"1989-12-13","area":"United States","image":"https://draw.acharts.net/artist/taylor_swift-54661b9acd1f9-l.png","id":1710,"name":"Taylor Swift"}]
-         * ranks : [49,46,46,42,40,41,38,33,29,26,26,28,34,24,21,18,18,16,14,14,15,13,13,12,9,8,7,7,5,5,5,5,4,5,7,11,12,12,14,18,14,16,15,14,14,13,9,5,16]
-         * id : 37722
-         */
+            /**
+             * title : Love Story
+             * singers : [{"info":"Taylor Alison Swift (born December 13, 1989 in Wyomissing, Pennsylvania) is an American country pop singer-songwriter and actress.  In 2006, she released her debut single \"Tim McGraw\", then her self-titled debut album, which was subsequently certified multi-platinum by the Recording Industry Association of America. In November 2008, Swift released her second album, Fearless. Fearless and Taylor Swift finished 2008 at number-three and number-six respectively, with sales of 2.1 and 1.5 million. Fearless has topped the Billboard 200 in 11 non-consecutive weeks; no album has spent more time at No. Read more about Taylor Swift on Last.fm .","type":"Female","born":"1989-12-13","area":"United States","image":"https://draw.acharts.net/artist/taylor_swift-54661b9acd1f9-l.png","id":1710,"name":"Taylor Swift"}]
+             * ranks : [49,46,46,42,40,41,38,33,29,26,26,28,34,24,21,18,18,16,14,14,15,13,13,12,9,8,7,7,5,5,5,5,4,5,7,11,12,12,14,18,14,16,15,14,14,13,9,5,16]
+             * id : 37722
+             */
 
         private String title;
         private int id;
@@ -65,16 +60,6 @@ public class SongBean {
         }
 
         public static class SingersBean {
-            /**
-             * info : Taylor Alison Swift (born December 13, 1989 in Wyomissing, Pennsylvania) is an American country pop singer-songwriter and actress.  In 2006, she released her debut single "Tim McGraw", then her self-titled debut album, which was subsequently certified multi-platinum by the Recording Industry Association of America. In November 2008, Swift released her second album, Fearless. Fearless and Taylor Swift finished 2008 at number-three and number-six respectively, with sales of 2.1 and 1.5 million. Fearless has topped the Billboard 200 in 11 non-consecutive weeks; no album has spent more time at No. Read more about Taylor Swift on Last.fm .
-             * type : Female
-             * born : 1989-12-13
-             * area : United States
-             * image : https://draw.acharts.net/artist/taylor_swift-54661b9acd1f9-l.png
-             * id : 1710
-             * name : Taylor Swift
-             */
-
             private String info;
             private String type;
             private String born;

@@ -36,7 +36,7 @@ public class DaoSession extends AbstractDaoSession {
 
         registerDao(ItunesSong.class, itunesSongDao);
     }
-
+    
     public void clear() {
         itunesSongDaoConfig.clearIdentityScope();
     }

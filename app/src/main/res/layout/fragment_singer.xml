@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:fitsSystemWindows="true">
+
     <TextView
         android:id="@+id/tv_singer_area"
         android:layout_width="wrap_content"
@@ -34,15 +35,12 @@
         android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:id="@+id/collapsing_toolbar_singer"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:fitsSystemWindows="true"
             app:contentScrim="@color/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
-            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark"
-            app:title="@string/singer_title"
-            app:titleEnabled="true">
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Dark">
 
             <android.support.constraint.ConstraintLayout
                 android:layout_width="match_parent"
@@ -128,12 +126,9 @@
                     app:layout_constraintTop_toBottomOf="@+id/tv_singer_name"
                     app:layout_constraintVertical_bias="0.233" />
 
-
-
             </android.support.constraint.ConstraintLayout>
 
             <android.support.v7.widget.Toolbar
-
                 android:id="@+id/toolbar_profile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

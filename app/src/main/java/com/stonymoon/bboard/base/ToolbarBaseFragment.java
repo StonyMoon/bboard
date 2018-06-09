@@ -12,11 +12,11 @@ import com.stonymoon.bboard.R;
 
 // must include base_toolbar
 public class ToolbarBaseFragment extends Fragment {
+    Toolbar toolbar;
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        Toolbar toolbar = getActivity().findViewById(R.id.base_toolbar);
-
+        toolbar = getActivity().findViewById(R.id.base_toolbar);
         if (toolbar != null && getActivity() instanceof AppCompatActivity) {
             AppCompatActivity activity = ((AppCompatActivity) getActivity());
             activity.setSupportActionBar(toolbar);
@@ -37,5 +37,7 @@ public class ToolbarBaseFragment extends Fragment {
 
     }
 
-
+    public void setToolbarTitle(String title) {
+        toolbar.setTitle(title);
+    }
 }

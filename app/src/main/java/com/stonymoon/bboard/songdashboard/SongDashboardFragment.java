@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -21,6 +22,9 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.stonymoon.bboard.R;
+import com.stonymoon.bboard.base.ToolbarBaseFragment;
+import com.stonymoon.bboard.bean.SingerBean;
+import com.stonymoon.bboard.bean.SongBean;
 import com.stonymoon.bboard.util.ToastUtil;
 
 import java.util.ArrayList;
@@ -31,11 +35,16 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 
-public class SongDashboardFragment extends Fragment implements SongDashboardContract.View {
+public class SongDashboardFragment extends ToolbarBaseFragment implements SongDashboardContract.View {
     @BindView(R.id.pb_song_dashboard)
     ProgressBar mProgressBar;
     @BindView(R.id.chart_rank)
     LineChart mChart;
+    @BindView(R.id.tv_song_dashboard_rank)
+    TextView tvRank;
+    @BindView(R.id.tv_song_dashboard_singer)
+    TextView tvSinger;
+
     List<Entry> entries = new ArrayList<>();
 
     private SongDashboardContract.Presenter mPresenter;
@@ -59,6 +68,23 @@ public class SongDashboardFragment extends Fragment implements SongDashboardCont
     public void setPresenter(SongDashboardContract.Presenter presenter) {
         this.mPresenter = presenter;
     }
+
+    @Override
+    public void setTextView(SongBean songBean) {
+        StringBuilder rank = new StringBuilder();
+        for (int i : songBean.getResource().getRanks()) {
+            rank.append(i);
+            rank.append("-");
+        }
+        tvRank.setText(rank.toString());
+        StringBuilder singers = new StringBuilder();
+        for (SongBean.ResourceBean.SingersBean s : songBean.getResource().getSingers()) {
+            singers.append(s.getName());
+        }
+        tvSinger.setText(singers.toString());
+
+    }
+
 
     @Override
     public void showChart(List<Integer> data) {
@@ -128,6 +154,12 @@ public class SongDashboardFragment extends Fragment implements SongDashboardCont
     @Override
     public void showProgressBar(boolean show) {
         mProgressBar.setVisibility(show ? View.VISIBLE : View.GONE);
+
+    }
+
+    @Override
+    public void setTitle(String title) {
+        setToolbarTitle(title);
     }
 
     @Override

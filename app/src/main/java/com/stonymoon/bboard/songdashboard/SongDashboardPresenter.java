@@ -46,6 +46,8 @@ public class SongDashboardPresenter implements SongDashboardContract.Presenter {
                     public void onNext(SongBean songBean) {
                         mView.showProgressBar(false);
                         mView.showChart(songBean.getResource().getRanks());
+                        mView.setTitle(songBean.getResource().getTitle());
+                        mView.setTextView(songBean);
                     }
                 });
     }
