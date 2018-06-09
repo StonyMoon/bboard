@@ -52,7 +52,7 @@ public class MainDashboardActivity extends AppCompatActivity {
         mSingerFragment = SingerFragment.getInstance();
         mSearchFragment.setPresenter(new SearchPresenter(mSearchFragment));
         mRankFragment.setPresenter(new RankPresenter(mRankFragment));
-        mSingerFragment.setPresenter(new SingerPresenter(mSingerFragment));
+        mSingerFragment.setPresenter(new SingerPresenter(mSingerFragment, 1));
         List<String> titles = new ArrayList<>();
         titles.add("a");
         titles.add("b");

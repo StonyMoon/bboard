@@ -11,16 +11,18 @@ import rx.schedulers.Schedulers;
 
 public class SingerPresenter implements SingerContract.Presenter {
     private SingerContract.View mView;
+    private int singerId;
 
-    public SingerPresenter(SingerContract.View mView) {
+    public SingerPresenter(SingerContract.View mView, int id) {
         this.mView = mView;
+        this.singerId = id;
     }
 
     public void start() {
         mView.showProgressBar(true);
         BaseDataManager.getHttpManager()
                 .create(BillboardService.class)
-                .getSinger(6)
+                .getSinger(singerId)
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<SingerBean>() {

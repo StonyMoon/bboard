@@ -19,20 +19,20 @@ public class MainActivity extends AppCompatActivity {
     @OnClick({R.id.iv_main_itunes, R.id.iv_main_rank, R.id.iv_main_song_dashboard, R.id.iv_main_singer, R.id.iv_main_search})
     void onButtonClick(View view) {
         switch (view.getId()) {
-            case R.id.btn_main_itunes:
+            case R.id.iv_main_itunes:
                 ItunesActivity.startActivity(this);
                 break;
-            case R.id.btn_main_rank:
+            case R.id.iv_main_rank:
                 RankActivity.startActivity(this);
                 break;
-            case R.id.btn_main_song_dashboard:
+            case R.id.iv_main_song_dashboard:
                 MainDashboardActivity.startActivity(this);
                 break;
             case R.id.iv_main_search:
                 SearchActivity.startActivity(this);
                 break;
-            case R.id.btn_main_singer:
-                SingerActivity.startActivity(this);
+            case R.id.iv_main_singer:
+
                 break;
         }
 
