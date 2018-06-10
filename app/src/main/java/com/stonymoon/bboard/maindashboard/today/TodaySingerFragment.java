@@ -13,12 +13,12 @@ import com.stonymoon.bboard.R;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class TodaySinger extends Fragment {
+public class TodaySingerFragment extends Fragment {
     private Context mContext;
     private Unbinder mUnbinder;
 
-    public static TodaySinger getInstance() {
-        return new TodaySinger();
+    public static TodaySingerFragment getInstance() {
+        return new TodaySingerFragment();
     }
 
     @Override

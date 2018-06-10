@@ -11,10 +11,14 @@ import com.stonymoon.bboard.util.ActivityUtil;
 import java.util.concurrent.RecursiveAction;
 
 public class SingerActivity extends AppCompatActivity {
+    public static final String SINGER_ID = "id";
     private SingerPresenter mPresenter;
 
-    public static void startActivity(Context context) {
-        context.startActivity(new Intent(context, SingerActivity.class));
+    public static void startActivity(Context context, int id) {
+        Intent intent = new Intent(context, SingerActivity.class);
+        intent.putExtra(SINGER_ID, id);
+
+        context.startActivity(intent);
     }
 
     @Override
@@ -26,10 +30,8 @@ public class SingerActivity extends AppCompatActivity {
         if (singerFragment == null) {
             singerFragment = SingerFragment.getInstance();
         }
-
         ActivityUtil.addFragmentToActivity(getSupportFragmentManager(), singerFragment, R.id.fl_singer_content);
-
-        mPresenter = new SingerPresenter(singerFragment);
+        mPresenter = new SingerPresenter(singerFragment, getIntent().getIntExtra(SINGER_ID, 1));
         singerFragment.setPresenter(mPresenter);
     }
 }

@@ -5,11 +5,12 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
 import com.github.mikephil.charting.components.AxisBase;
@@ -22,8 +23,8 @@ import com.github.mikephil.charting.formatter.IAxisValueFormatter;
 import com.github.mikephil.charting.formatter.IValueFormatter;
 import com.github.mikephil.charting.utils.ViewPortHandler;
 import com.stonymoon.bboard.R;
+import com.stonymoon.bboard.adapter.SingerItemAdapter;
 import com.stonymoon.bboard.base.ToolbarBaseFragment;
-import com.stonymoon.bboard.bean.SingerBean;
 import com.stonymoon.bboard.bean.SongBean;
 import com.stonymoon.bboard.util.ToastUtil;
 
@@ -40,16 +41,20 @@ public class SongDashboardFragment extends ToolbarBaseFragment implements SongDa
     ProgressBar mProgressBar;
     @BindView(R.id.chart_rank)
     LineChart mChart;
-    @BindView(R.id.tv_song_dashboard_rank)
-    TextView tvRank;
-    @BindView(R.id.tv_song_dashboard_singer)
-    TextView tvSinger;
+    @BindView(R.id.recycler_song_dashboard_singer)
+    RecyclerView mRecyclerSinger;
+
 
     List<Entry> entries = new ArrayList<>();
 
     private SongDashboardContract.Presenter mPresenter;
     private Context mContext;
     private Unbinder mUnbinder;
+    private List<SongBean.ResourceBean.SingersBean> mSingerList = new ArrayList<>();
+    private SingerItemAdapter adapter = new SingerItemAdapter(mSingerList);
+
+
+
 
     public SongDashboardFragment() {
     }
@@ -68,23 +73,6 @@ public class SongDashboardFragment extends ToolbarBaseFragment implements SongDa
     public void setPresenter(SongDashboardContract.Presenter presenter) {
         this.mPresenter = presenter;
     }
-
-    @Override
-    public void setTextView(SongBean songBean) {
-        StringBuilder rank = new StringBuilder();
-        for (int i : songBean.getResource().getRanks()) {
-            rank.append(i);
-            rank.append("-");
-        }
-        tvRank.setText(rank.toString());
-        StringBuilder singers = new StringBuilder();
-        for (SongBean.ResourceBean.SingersBean s : songBean.getResource().getSingers()) {
-            singers.append(s.getName());
-        }
-        tvSinger.setText(singers.toString());
-
-    }
-
 
     @Override
     public void showChart(List<Integer> data) {
@@ -154,12 +142,6 @@ public class SongDashboardFragment extends ToolbarBaseFragment implements SongDa
     @Override
     public void showProgressBar(boolean show) {
         mProgressBar.setVisibility(show ? View.VISIBLE : View.GONE);
-
-    }
-
-    @Override
-    public void setTitle(String title) {
-        setToolbarTitle(title);
     }
 
     @Override
@@ -175,6 +157,8 @@ public class SongDashboardFragment extends ToolbarBaseFragment implements SongDa
         mUnbinder = ButterKnife.bind(this, root);
         mPresenter.showRank();
         mChart.setNoDataText("");
+        mRecyclerSinger.setLayoutManager(new LinearLayoutManager(mContext));
+        mRecyclerSinger.setAdapter(adapter);
         return root;
     }
 
@@ -182,5 +166,11 @@ public class SongDashboardFragment extends ToolbarBaseFragment implements SongDa
     public void onDestroyView() {
         super.onDestroyView();
         mUnbinder.unbind();
+    }
+
+    @Override
+    public void showSinger(List<SongBean.ResourceBean.SingersBean> singersBeans) {
+        mSingerList.addAll(singersBeans);
+        adapter.notifyDataSetChanged();
     }
 }

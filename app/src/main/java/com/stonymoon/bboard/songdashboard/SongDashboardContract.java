@@ -10,13 +10,12 @@ import java.util.List;
 public interface SongDashboardContract {
     interface View extends LoadingBaseView<Presenter> {
         void showChart(List<Integer> list);
-        void setTitle(String title);
-        void setTextView(SongBean songBean);
+
+        void showSinger(List<SongBean.ResourceBean.SingersBean> singersBeans);
     }
 
     interface Presenter extends BasePresenter {
         void showRank();
-
 
     }
 
