@@ -25,6 +25,7 @@ public class SearchPresenter implements SearchContract.Presenter {
 
     @Override
     public void search(String songName) {
+        mView.showNoResult(false);
         mView.showProgressBar(true);
         BillboardService service = BaseDataManager.getHttpManager().create(BillboardService.class);
         service.searchSong(songName)
@@ -45,10 +46,13 @@ public class SearchPresenter implements SearchContract.Presenter {
                     @Override
                     public void onNext(SearchBean searchBean) {
                         mView.showProgressBar(false);
+                        if (searchBean.getResource().size() == 0) {
+                            mView.showNoResult(true);
+                        }
                         mView.showList(searchBean.getResource());
+
                     }
                 });
-
 
     }
 }

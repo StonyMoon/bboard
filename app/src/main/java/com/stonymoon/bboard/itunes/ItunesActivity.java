@@ -3,17 +3,20 @@ package com.stonymoon.bboard.itunes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Color;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.adapter.ItunesAdapter;
-import com.stonymoon.bboard.bean.ItunesBean;
 import com.stonymoon.bboard.bean.ItunesSong;
 
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class ItunesActivity extends AppCompatActivity implements ItunesContract.View {
 
@@ -30,14 +34,28 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
     RecyclerView recyclerItunes;
     @BindView(R.id.pb_itunes)
     ProgressBar pbItunes;
+    @BindView(R.id.base_toolbar)
+    Toolbar tbItunes;
 
     @Inject
     ItunesPresenter mPresenter;
     private ItunesAdapter mListAdapter;
+    private boolean isItunes = true;
 
     public static void startActivity(Context context) {
         Intent intent = new Intent(context, ItunesActivity.class);
         context.startActivity(intent);
+    }
+
+    @OnClick(R.id.iv_itunes_collection)
+    void clickCollection() {
+        if (isItunes) {
+            mPresenter.loadCollections();
+        } else {
+            mPresenter.loadItunes();
+        }
+        isItunes = !isItunes;
+
     }
 
     @Override
@@ -91,4 +109,6 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
         super.onResume();
         mPresenter.start();
     }
+
+
 }

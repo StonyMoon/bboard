@@ -4,16 +4,20 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="?android:attr/selectableItemBackground"
-    android:orientation="horizontal"
 
+    android:orientation="vertical"
     >
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
     <de.hdodenhof.circleimageview.CircleImageView
         android:id="@+id/circle_iv_singer_item"
         android:layout_width="36dp"
         android:layout_height="36dp"
         android:layout_margin="16dp"
-        android:src="@color/colorPrimary" />
+        android:src="@mipmap/default_avator" />
 
     <TextView
         android:id="@+id/tv_singer_item_name"
@@ -22,5 +26,7 @@
         android:layout_marginTop="16dp"
         android:text="@string/singer_title" />
 
+    </LinearLayout>
 
+    <include layout="@layout/view_split" />
 </LinearLayout>

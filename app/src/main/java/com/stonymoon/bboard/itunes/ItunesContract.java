@@ -26,6 +26,11 @@ public interface ItunesContract {
     interface Presenter extends BasePresenter {
         void loadItunes();
 
+        void replaceWithItunes();
+
+        void collectSong(ItunesSong song);
+
+        void loadCollections();
     }
 
 

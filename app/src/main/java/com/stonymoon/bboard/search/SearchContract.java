@@ -12,7 +12,7 @@ public interface SearchContract {
     interface View extends LoadingBaseView<Presenter> {
         void showList(List<SearchBean.ResourceBean> list);
 
-        void showNoResult();
+        void showNoResult(boolean isShow);
 
 
     }

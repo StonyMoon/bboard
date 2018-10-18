@@ -44,6 +44,7 @@ dependencies {
     provided 'javax.annotation:jsr250-api:1.0'
     // Dependencies for OkHttp
     compile 'com.squareup.okhttp3:okhttp:3.8.1'
+    compile 'com.squareup.okhttp3:logging-interceptor:3.8.1'
     // Dependencies for ButterKnife
     compile 'com.jakewharton:butterknife:8.8.1'
     annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'

@@ -86,6 +86,7 @@ public class RankFragment extends ToolbarBaseFragment implements RankContract.Vi
     @Override
     public void showList(List<RankBean.ResourceBean> list) {
         mAdapter.setData(list);
+
     }
 
     @Override

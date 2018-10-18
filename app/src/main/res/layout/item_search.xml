@@ -11,21 +11,23 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="5dp"
+        android:layout_marginTop="8dp"
         android:maxLines="1"
         android:text="TextView"
-        android:textColor="@color/primaryText"
-        android:textSize="16sp" />
+        android:textColor="@color/secondText"
+        android:textSize="14sp" />
 
     <TextView
         android:id="@+id/tv_search_item_singer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
         android:maxLines="1"
 
         android:text="TextView"
-        android:textColor="@color/secondText"
+        android:textColor="@color/thirdText"
         android:textSize="12sp" />
+
+    <include layout="@layout/view_split" />
 </LinearLayout>

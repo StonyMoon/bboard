@@ -65,7 +65,9 @@ public class SingerItemAdapter extends RecyclerView.Adapter<SingerItemAdapter.Si
     public void onBindViewHolder(SingerItemAdapter.SingerBornViewHolder holder, int position) {
         SongBean.ResourceBean.SingersBean singer = mSingers.get(position);
         holder.tvName.setText(singer.getName());
-        Glide.with(mContext).load(singer.getImage()).into(holder.ivSinger);
+        if (singer.getImage() != null) {
+            Glide.with(mContext).load(singer.getImage()).into(holder.ivSinger);
+        }
 
     }
 

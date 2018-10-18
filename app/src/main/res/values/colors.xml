@@ -3,7 +3,9 @@
     <color name="colorPrimary">#3C3C3C</color>
     <color name="colorPrimaryDark">#323232</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="primaryText">#212121</color>
-    <color name="secondText">#757575</color>
+    <color name="primaryText">#333</color>
+    <color name="secondText">#666</color>
+    <color name="thirdText">#999</color>
     <color name="gery">#d2d2d2</color>
+    <color name="splitLine">#d2d2d2</color>
 </resources>

@@ -20,7 +20,6 @@ public class SongDashboardPresenter implements SongDashboardContract.Presenter {
     @Override
     public void start() {
 
-
     }
 
     @Override

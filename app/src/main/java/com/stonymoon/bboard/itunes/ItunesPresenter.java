@@ -1,11 +1,18 @@
 package com.stonymoon.bboard.itunes;
 
 
+import android.app.Application;
+
 import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.ItunesService;
+import com.stonymoon.bboard.app.MyApplication;
 import com.stonymoon.bboard.bean.ItunesBean;
 import com.stonymoon.bboard.bean.ItunesSong;
+import com.stonymoon.bboard.dao.DaoSession;
+import com.stonymoon.bboard.dao.ItunesSongDao;
 
+
+import org.greenrobot.greendao.query.QueryBuilder;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +27,7 @@ import rx.schedulers.Schedulers;
 public class ItunesPresenter implements ItunesContract.Presenter {
     private final ItunesContract.View mItunesView;
     private List<ItunesSong> mList = new ArrayList<>();
+    private List<ItunesSong> mCollections = new ArrayList<>();
 
     @Inject
     public ItunesPresenter(ItunesContract.View itunesActivity) {
@@ -29,6 +37,7 @@ public class ItunesPresenter implements ItunesContract.Presenter {
     }
 
     public void loadItunes() {
+
         mItunesView.showProgressBar(true);
         ItunesService service = BaseDataManager
                 .getHttpManager()
@@ -50,6 +59,7 @@ public class ItunesPresenter implements ItunesContract.Presenter {
 
                     @Override
                     public void onNext(ItunesBean itunesBean) {
+                        mList.clear();
                         mList.addAll(itunesBean.getSongs());
                         mItunesView.showItunesList(mList);
                         mItunesView.showProgressBar(false);
@@ -65,6 +75,24 @@ public class ItunesPresenter implements ItunesContract.Presenter {
         loadItunes();
 
     }
+
+    public void loadCollections() {
+        mCollections.clear();
+        DaoSession session = MyApplication.getInstances().getDaoSession();
+        QueryBuilder<ItunesSong> builder = session.getItunesSongDao().queryBuilder();
+        mCollections.addAll(builder.build().list());
+        mItunesView.showItunesList(mCollections);
+    }
+
+    public void replaceWithItunes() {
+        mItunesView.showItunesList(mList);
+    }
+
+    public void collectSong(ItunesSong song) {
+        DaoSession session = MyApplication.getInstances().getDaoSession();
+        session.getItunesSongDao().insert(song);
+    }
+
 
 
 }

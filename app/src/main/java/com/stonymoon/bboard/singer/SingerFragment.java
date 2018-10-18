@@ -1,38 +1,35 @@
 package com.stonymoon.bboard.singer;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AbsListView;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.stonymoon.bboard.R;
-import com.stonymoon.bboard.adapter.SearchAdapter;
 import com.stonymoon.bboard.adapter.SingerSongAdapter;
-import com.stonymoon.bboard.base.ToolbarBaseFragment;
-import com.stonymoon.bboard.bean.SearchBean;
+import com.stonymoon.bboard.app.MyApplication;
 import com.stonymoon.bboard.bean.SingerBean;
 import com.stonymoon.bboard.util.ToastUtil;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import butterknife.Unbinder;
-import retrofit2.Retrofit;
+import de.hdodenhof.circleimageview.CircleImageView;
 
 
 public class SingerFragment extends Fragment implements SingerContract.View {
@@ -49,19 +46,18 @@ public class SingerFragment extends Fragment implements SingerContract.View {
     @BindView(R.id.tv_singer_type)
     TextView tvType;
     @BindView(R.id.iv_singer_avatar)
-    ImageView ivAvatar;
+    CircleImageView ivAvatar;
     @BindView(R.id.iv_singer_bg)
     ImageView ivBackground;
 
     @BindView(R.id.recycler_singer_songs)
     RecyclerView recyclerSongs;
-    @BindView(R.id.collapsing_toolbar_singer)
-    CollapsingToolbarLayout toolbar;
 
     private Unbinder mUnbinder;
     private SingerContract.Presenter mPresenter;
     private Context mContext;
     private SingerSongAdapter adapter = new SingerSongAdapter(new ArrayList<SingerBean.ResourceBean.SongsBean>());
+    private SingerBean bean;
 
     public SingerFragment() {
 
@@ -69,6 +65,12 @@ public class SingerFragment extends Fragment implements SingerContract.View {
 
     public static SingerFragment getInstance() {
         return new SingerFragment();
+    }
+
+    @OnClick(R.id.tv_singer_info)
+    void click() {
+        showDialog();
+
     }
 
     @Override
@@ -94,15 +96,21 @@ public class SingerFragment extends Fragment implements SingerContract.View {
 
     @Override
     public void showInfo(SingerBean bean) {
+        this.bean = bean;
         SingerBean.ResourceBean singer = bean.getResource();
         tvArea.setText(singer.getArea());
         tvBorn.setText(singer.getBorn());
-        tvInfo.setText(singer.getInfo());
+        if (MyApplication.getSinger(singer.getId()) == null) {
+            tvInfo.setText(singer.getInfo());
+        } else {
+            tvInfo.setText(MyApplication.getSinger(singer.getId()));
+        }
         tvName.setText(singer.getName());
         tvType.setText(singer.getType());
         Glide.with(mContext)
                 .load(singer.getImage())
                 .into(ivAvatar);
+
         Glide.with(mContext)
                 .load(singer.getImage())
                 .into(ivBackground);
@@ -128,5 +136,25 @@ public class SingerFragment extends Fragment implements SingerContract.View {
         mUnbinder.unbind();
     }
 
+    private void showDialog() {
+        LayoutInflater factory = LayoutInflater.from(mContext);//提示框
+        final View view = factory.inflate(R.layout.editbox_layout, null);//这里必须是final的
+        final EditText edit = (EditText) view.findViewById(R.id.editText);//获得输入框对象
+
+        new AlertDialog.Builder(mContext)
+                .setTitle("修改歌手信息")//提示框标题
+                .setView(view)
+                .setPositiveButton("修改",//提示框的两个按钮
+                        new android.content.DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog,
+                                                int which) {
+
+                                MyApplication.putSinger(bean.getResource().getId(), edit.getText().toString());
+                                tvInfo.setText(edit.getText().toString());
+                            }
+                        }).setNegativeButton("取消", null).create().show();
+
+    }
 
 }

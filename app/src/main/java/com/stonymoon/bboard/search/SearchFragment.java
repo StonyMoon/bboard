@@ -43,6 +43,8 @@ public class SearchFragment extends Fragment implements SearchContract.View {
     EditText etSearch;
     @BindView(R.id.iv_search)
     ImageView ivSearch;
+    @BindView(R.id.tv_no_result)
+    TextView tvNoResult;
 
 
     private Unbinder mUnbinder;
@@ -84,8 +86,9 @@ public class SearchFragment extends Fragment implements SearchContract.View {
     }
 
     @Override
-    public void showNoResult() {
-        ToastUtil.show(mContext, getString(R.string.no_result));
+    public void showNoResult(boolean isShow) {
+//        ToastUtil.show(mContext, getString(R.string.no_result));
+        tvNoResult.setVisibility(isShow ? View.VISIBLE : View.GONE);
     }
 
 
