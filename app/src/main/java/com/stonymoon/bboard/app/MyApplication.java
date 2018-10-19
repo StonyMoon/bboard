@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.stonymoon.bboard.bean.SingerBean;
 import com.stonymoon.bboard.dao.DaoMaster;
 import com.stonymoon.bboard.dao.DaoSession;
+import com.tencent.bugly.Bugly;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -39,6 +40,7 @@ public class MyApplication extends Application {
         super.onCreate();
         instances = this;
         setDatabase();
+        Bugly.init(getApplicationContext(), "ee3f639d67", true);
     }
 
     /**
