@@ -4,7 +4,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,15 +14,15 @@ import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
 /**
- * Created by Stony on 2018/10/18.
+ * Created by Stony on 2018/10/19.
  */
 
-public class SongDataFragment extends Fragment {
+public class SongSingerFragment extends Fragment {
     private Context mContext;
     private Unbinder mUnbinder;
 
-    public static SongDataFragment getInstance() {
-        return new SongDataFragment();
+    public static SongSingerFragment getInstance() {
+        return new SongSingerFragment();
     }
 
     @Override
@@ -39,4 +38,6 @@ public class SongDataFragment extends Fragment {
         mUnbinder = ButterKnife.bind(this, root);
         return root;
     }
+
+
 }

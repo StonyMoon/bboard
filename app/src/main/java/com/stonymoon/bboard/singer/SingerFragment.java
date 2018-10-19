@@ -17,6 +17,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.MultiTransformation;
+import com.squareup.picasso.Picasso;
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.adapter.SingerSongAdapter;
 import com.stonymoon.bboard.app.MyApplication;
@@ -30,6 +32,7 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
+import jp.wasabeef.picasso.transformations.BlurTransformation;
 
 
 public class SingerFragment extends Fragment implements SingerContract.View {
@@ -107,13 +110,12 @@ public class SingerFragment extends Fragment implements SingerContract.View {
         }
         tvName.setText(singer.getName());
         tvType.setText(singer.getType());
+        Picasso.with(mContext).load(singer.getImage())
+                .transform(new BlurTransformation(mContext, 25, 3)).into(ivBackground);
         Glide.with(mContext)
                 .load(singer.getImage())
                 .into(ivAvatar);
 
-        Glide.with(mContext)
-                .load(singer.getImage())
-                .into(ivBackground);
         adapter.setData(bean.getResource().getSongs());
 
 

@@ -8,6 +8,7 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
+
     }
     buildTypes {
         release {
@@ -33,6 +34,9 @@ dependencies {
         exclude group: "com.android.support"
     }
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
+
+    compile 'jp.wasabeef:picasso-transformations:2.2.1'
+
     // Dependencies for MPCharts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     // Dependencies for RxJava and RxAndroid

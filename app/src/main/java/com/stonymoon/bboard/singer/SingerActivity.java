@@ -10,6 +10,8 @@ import com.stonymoon.bboard.util.ActivityUtil;
 
 import java.util.concurrent.RecursiveAction;
 
+import butterknife.ButterKnife;
+
 public class SingerActivity extends AppCompatActivity {
     public static final String SINGER_ID = "id";
     private SingerPresenter mPresenter;
@@ -17,7 +19,6 @@ public class SingerActivity extends AppCompatActivity {
     public static void startActivity(Context context, int id) {
         Intent intent = new Intent(context, SingerActivity.class);
         intent.putExtra(SINGER_ID, id);
-
         context.startActivity(intent);
     }
 
