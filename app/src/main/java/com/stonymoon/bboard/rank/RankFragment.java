@@ -1,16 +1,13 @@
 package com.stonymoon.bboard.rank;
 
-
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.adapter.RankAdapter;
@@ -23,7 +20,6 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
 
 public class RankFragment extends ToolbarBaseFragment implements RankContract.View {
@@ -34,8 +30,6 @@ public class RankFragment extends ToolbarBaseFragment implements RankContract.Vi
 
     private RankContract.Presenter mPresenter;
     private RankAdapter mAdapter;
-    private Unbinder mUnbinder;
-    private Context mContext;
 
     public RankFragment() {
 
@@ -76,24 +70,12 @@ public class RankFragment extends ToolbarBaseFragment implements RankContract.Vi
         return root;
     }
 
-
-    @Override
-    public void onResume() {
-        super.onResume();
-
-    }
-
     @Override
     public void showList(List<RankBean.ResourceBean> list) {
         mAdapter.setData(list);
 
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        mUnbinder.unbind();
-    }
 
     @Override
     public void showError() {

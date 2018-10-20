@@ -8,9 +8,6 @@ import android.os.Bundle;
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.util.ActivityUtil;
 
-import java.util.concurrent.RecursiveAction;
-
-import butterknife.ButterKnife;
 
 public class SingerActivity extends AppCompatActivity {
     public static final String SINGER_ID = "id";

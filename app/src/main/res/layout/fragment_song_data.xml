@@ -1,7 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical">
 
+    <TextView
+        android:id="@+id/tv_song_data_rank"
+        style="@style/SongDataText"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="歌曲走势："
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <TextView
+        android:id="@+id/tv_song_data_total_weeks"
+        style="@style/SongDataText"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="在榜周数："
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_song_data_rank" />
+
+    <TextView
+        android:id="@+id/tv_song_data_first_weeks"
+        style="@style/SongDataText"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="榜首周数："
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_song_data_total_weeks" />
+
+    <TextView
+        android:id="@+id/tv_song_data_tenth_weeks"
+        style="@style/SongDataText"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:text="前十周数："
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_song_data_first_weeks" />
+
+    <TextView
+        android:id="@+id/tv_song_data_fiftieth_weeks"
+        style="@style/SongDataText"
+        android:layout_marginStart="8dp"
+        android:text="前50周数："
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_song_data_tenth_weeks" />
 
 </android.support.constraint.ConstraintLayout>

@@ -10,7 +10,15 @@ import android.os.Bundle;
 
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.adapter.MyFragmentPagerAdapter;
-import com.stonymoon.bboard.util.ActivityUtil;
+import com.stonymoon.bboard.songdashboard.chart.SongChartContract;
+import com.stonymoon.bboard.songdashboard.chart.SongChartFragment;
+import com.stonymoon.bboard.songdashboard.chart.SongChartPresenter;
+import com.stonymoon.bboard.songdashboard.data.SongDataContract;
+import com.stonymoon.bboard.songdashboard.data.SongDataFragment;
+import com.stonymoon.bboard.songdashboard.data.SongDataPresenter;
+import com.stonymoon.bboard.songdashboard.singer.SongSingerContract;
+import com.stonymoon.bboard.songdashboard.singer.SongSingerFragment;
+import com.stonymoon.bboard.songdashboard.singer.SongSingerPresenter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +32,7 @@ public class SongDashboardActivity extends AppCompatActivity {
     TabLayout mTabLayout;
     @BindView(R.id.pager_song)
     ViewPager mViewPager;
-    private SongDashboardContract.Presenter mPresenter;
+
 
     public static void startActivity(Context context, String songId) {
         Intent intent = new Intent(context, SongDashboardActivity.class);
@@ -51,12 +59,19 @@ public class SongDashboardActivity extends AppCompatActivity {
         }
         mTabLayout.setupWithViewPager(mViewPager);
         ArrayList<Fragment> fragmentList = new ArrayList<>();
-        SongDashboardFragment songDashboardFragment = SongDashboardFragment.getInstance();
-        mPresenter = new SongDashboardPresenter(songDashboardFragment, getIntent().getStringExtra(SONG_ID));
-        songDashboardFragment.setPresenter(mPresenter);
-        fragmentList.add(songDashboardFragment);
-        fragmentList.add(SongDataFragment.getInstance());
-        fragmentList.add(SongSingerFragment.getInstance());
+        SongChartFragment chartFragment = SongChartFragment.getInstance();
+        SongDataFragment dataFragment = SongDataFragment.getInstance();
+        SongSingerFragment singerFragment = SongSingerFragment.getInstance();
+        String id = getIntent().getStringExtra(SONG_ID);
+        SongChartContract.Presenter chartPresenter = new SongChartPresenter(chartFragment, id);
+        SongSingerContract.Presenter singerPresenter = new SongSingerPresenter(singerFragment, id);
+        SongDataContract.Presenter dataPresenter = new SongDataPresenter(dataFragment, id);
+        chartFragment.setPresenter(chartPresenter);
+        singerFragment.setPresenter(singerPresenter);
+        dataFragment.setPresenter(dataPresenter);
+        fragmentList.add(chartFragment);
+        fragmentList.add(dataFragment);
+        fragmentList.add(singerFragment);
 
         MyFragmentPagerAdapter adapter = new MyFragmentPagerAdapter(getSupportFragmentManager(), fragmentList, titles);
         mViewPager.setAdapter(adapter);

@@ -1,12 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.stonymoon.bboard.songdashboard.SongDashboardActivity">
 
-
+    <android.support.v7.widget.Toolbar
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        app:title="@string/song_dashboard_title"
+        app:titleTextColor="#FFF" />
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_song"
         android:layout_width="match_parent"
@@ -17,7 +23,7 @@
 
     <android.support.v4.view.ViewPager
         android:id="@+id/pager_song"
-        android:layout_width="fill_parent"
+        android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1" />
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

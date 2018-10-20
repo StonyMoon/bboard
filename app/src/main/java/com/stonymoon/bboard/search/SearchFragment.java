@@ -3,7 +3,6 @@ package com.stonymoon.bboard.search;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.KeyEvent;
@@ -12,7 +11,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
@@ -20,6 +18,7 @@ import android.widget.TextView;
 
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.adapter.SearchAdapter;
+import com.stonymoon.bboard.base.BaseFragment;
 import com.stonymoon.bboard.bean.SearchBean;
 import com.stonymoon.bboard.util.ToastUtil;
 
@@ -28,12 +27,9 @@ import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
-
-import static android.content.Context.INPUT_METHOD_SERVICE;
 
 
-public class SearchFragment extends Fragment implements SearchContract.View {
+public class SearchFragment extends BaseFragment implements SearchContract.View {
 
     @BindView(R.id.pb_search)
     ProgressBar mProgressBar;
@@ -46,9 +42,6 @@ public class SearchFragment extends Fragment implements SearchContract.View {
     @BindView(R.id.tv_no_result)
     TextView tvNoResult;
 
-
-    private Unbinder mUnbinder;
-    private Context mContext;
     private SearchAdapter mAdapter;
     private SearchContract.Presenter mPresenter;
 
@@ -65,10 +58,7 @@ public class SearchFragment extends Fragment implements SearchContract.View {
         this.mPresenter = presenter;
     }
 
-    public void onAttach(Context context) {
-        super.onAttach(context);
-        mContext = getContext();
-    }
+
 
     @Override
     public void showList(List<SearchBean.ResourceBean> list) {
@@ -93,12 +83,6 @@ public class SearchFragment extends Fragment implements SearchContract.View {
 
 
     @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        mUnbinder.unbind();
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
@@ -121,7 +105,9 @@ public class SearchFragment extends Fragment implements SearchContract.View {
                 if (actionId == EditorInfo.IME_ACTION_SEND || (event != null && event.getKeyCode() == KeyEvent.KEYCODE_ENTER)) {
                     mPresenter.search(etSearch.getText().toString());
                     InputMethodManager imm = (InputMethodManager) mContext.getSystemService(Context.INPUT_METHOD_SERVICE);
-                    imm.hideSoftInputFromWindow(etSearch.getWindowToken(), 0);
+                    if (imm != null) {
+                        imm.hideSoftInputFromWindow(etSearch.getWindowToken(), 0);
+                    }
                     return true;
                 }
                 return false;

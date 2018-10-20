@@ -1,5 +1,4 @@
-package com.stonymoon.bboard.songdashboard;
-
+package com.stonymoon.bboard.songdashboard.data;
 
 import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.BillboardService;
@@ -9,21 +8,20 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class SongDashboardPresenter implements SongDashboardContract.Presenter {
-    private SongDashboardContract.View mView;
+/**
+ * Created by Stony on 2018/10/20.
+ */
+
+public class SongDataPresenter implements SongDataContract.Presenter {
+    private SongDataContract.View mView;
     private String mSongId;
 
-    SongDashboardPresenter(SongDashboardContract.View view, String songId) {
-        mView = view;
-        mSongId = songId;
+    public SongDataPresenter(SongDataContract.View mView, String mSongId) {
+        this.mView = mView;
+        this.mSongId = mSongId;
     }
-    @Override
+
     public void start() {
-
-    }
-
-    @Override
-    public void showRank() {
         BillboardService rankService = BaseDataManager.getHttpManager().create(BillboardService.class);
         mView.showProgressBar(true);
         rankService.getRank(mSongId)
@@ -44,8 +42,7 @@ public class SongDashboardPresenter implements SongDashboardContract.Presenter {
                     @Override
                     public void onNext(SongBean songBean) {
                         mView.showProgressBar(false);
-                        mView.showChart(songBean.getResource().getRanks());
-                        mView.showSinger(songBean.getResource().getSingers());
+                        mView.initData(songBean.getResource().getRanks());
                     }
                 });
     }

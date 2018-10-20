@@ -9,14 +9,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.stonymoon.bboard.R;
+import com.stonymoon.bboard.base.BaseFragment;
 
 import butterknife.ButterKnife;
-import butterknife.Unbinder;
 
-public class TodaySingerFragment extends Fragment {
-    private Context mContext;
-    private Unbinder mUnbinder;
-
+public class TodaySingerFragment extends BaseFragment {
     public static TodaySingerFragment getInstance() {
         return new TodaySingerFragment();
     }
@@ -35,9 +32,5 @@ public class TodaySingerFragment extends Fragment {
         return root;
     }
 
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        mUnbinder.unbind();
-    }
+
 }

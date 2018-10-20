@@ -11,7 +11,7 @@ import android.view.View;
 import com.stonymoon.bboard.R;
 
 // must include base_toolbar
-public class ToolbarBaseFragment extends Fragment {
+public class ToolbarBaseFragment extends BaseFragment {
     Toolbar toolbar;
     @Override
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {

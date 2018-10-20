@@ -6,5 +6,6 @@
     <com.github.mikephil.charting.charts.LineChart
         android:id="@+id/chart_rank"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_margin="8dp" />
 </android.support.constraint.ConstraintLayout>

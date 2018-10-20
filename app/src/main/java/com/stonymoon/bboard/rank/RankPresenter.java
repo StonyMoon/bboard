@@ -5,10 +5,8 @@ import com.stonymoon.bboard.api.services.BillboardService;
 import com.stonymoon.bboard.bean.RankBean;
 
 
-import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
-import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 

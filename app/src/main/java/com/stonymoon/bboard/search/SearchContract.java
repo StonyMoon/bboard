@@ -2,7 +2,6 @@ package com.stonymoon.bboard.search;
 
 
 import com.stonymoon.bboard.base.BasePresenter;
-import com.stonymoon.bboard.base.BaseView;
 import com.stonymoon.bboard.base.LoadingBaseView;
 import com.stonymoon.bboard.bean.SearchBean;
 
