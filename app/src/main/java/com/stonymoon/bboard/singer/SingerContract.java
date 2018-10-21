@@ -7,6 +7,8 @@ import com.stonymoon.bboard.bean.SingerBean;
 public interface SingerContract {
     interface View extends LoadingBaseView<Presenter> {
         void showInfo(SingerBean bean);
+
+        void setTitle(String title);
     }
 
     interface Presenter extends BasePresenter {

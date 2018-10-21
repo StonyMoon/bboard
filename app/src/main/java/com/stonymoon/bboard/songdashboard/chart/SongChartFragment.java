@@ -46,6 +46,7 @@ public class SongChartFragment extends BaseFragment implements SongChartContract
         View root = inflater.inflate(R.layout.fragment_song_chart, container, false);
         mUnbinder = ButterKnife.bind(this, root);
         mChart.setNoDataText("");
+        mPresenter.start();
         return root;
     }
 
@@ -112,7 +113,7 @@ public class SongChartFragment extends BaseFragment implements SongChartContract
     @Override
     public void onResume() {
         super.onResume();
-        mPresenter.start();
+
     }
 
 

@@ -14,6 +14,7 @@ public interface SongSingerContract {
     interface View extends LoadingBaseView<SongSingerContract.Presenter> {
         void showSinger(List<SongBean.ResourceBean.SingersBean> singersBeans);
 
+        void setTitle(String title);
     }
 
     interface Presenter extends BasePresenter {

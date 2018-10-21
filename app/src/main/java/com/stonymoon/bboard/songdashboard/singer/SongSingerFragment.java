@@ -64,4 +64,9 @@ public class SongSingerFragment extends BaseFragment implements SongSingerContra
         mSingerList.addAll(singersBeans);
         adapter.notifyDataSetChanged();
     }
+
+    @Override
+    public void setTitle(String title) {
+        getActivity().setTitle(title);
+    }
 }

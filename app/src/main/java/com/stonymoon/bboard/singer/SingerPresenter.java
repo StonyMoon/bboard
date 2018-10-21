@@ -41,6 +41,7 @@ public class SingerPresenter implements SingerContract.Presenter {
                     public void onNext(SingerBean singerBean) {
                         mView.showInfo(singerBean);
                         mView.showProgressBar(false);
+                        mView.setTitle(singerBean.getResource().getName());
                     }
                 });
 

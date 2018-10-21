@@ -4,10 +4,14 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AlertDialog;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +19,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+
 
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
@@ -51,6 +56,10 @@ public class SingerFragment extends Fragment implements SingerContract.View {
     CircleImageView ivAvatar;
     @BindView(R.id.iv_singer_bg)
     ImageView ivBackground;
+    @BindView(R.id.toolbar_profile)
+    Toolbar toolbar;
+    @BindView(R.id.collapsing_toolbar)
+    CollapsingToolbarLayout collapsingToolbarLayout;
 
     @BindView(R.id.recycler_singer_songs)
     RecyclerView recyclerSongs;
@@ -128,7 +137,28 @@ public class SingerFragment extends Fragment implements SingerContract.View {
         recyclerSongs.setAdapter(adapter);
         recyclerSongs.setLayoutManager(new LinearLayoutManager(mContext));
         mPresenter.start();
+        initToolbar();
         return root;
+    }
+
+    private void initToolbar() {
+        if (toolbar != null && getActivity() instanceof AppCompatActivity) {
+            AppCompatActivity activity = ((AppCompatActivity) getActivity());
+            activity.setSupportActionBar(toolbar);
+            ActionBar actionBar = activity.getSupportActionBar();
+            if (actionBar != null) {
+                actionBar.setDisplayHomeAsUpEnabled(true);
+                actionBar.setHomeButtonEnabled(true);
+                actionBar.setDisplayShowHomeEnabled(true);
+                actionBar.setDisplayShowTitleEnabled(true);
+                toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        getActivity().finish();
+                    }
+                });
+            }
+        }
     }
 
     @Override
@@ -158,4 +188,9 @@ public class SingerFragment extends Fragment implements SingerContract.View {
 
     }
 
+    @Override
+    public void setTitle(String title) {
+        collapsingToolbarLayout.setTitle(title);
+        toolbar.setTitle(title);
+    }
 }

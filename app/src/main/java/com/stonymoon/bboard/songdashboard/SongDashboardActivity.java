@@ -5,8 +5,11 @@ import android.content.Intent;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.ViewPager;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.adapter.MyFragmentPagerAdapter;
@@ -32,6 +35,8 @@ public class SongDashboardActivity extends AppCompatActivity {
     TabLayout mTabLayout;
     @BindView(R.id.pager_song)
     ViewPager mViewPager;
+    @BindView(R.id.base_toolbar)
+    Toolbar mToolbar;
 
 
     public static void startActivity(Context context, String songId) {
@@ -46,7 +51,26 @@ public class SongDashboardActivity extends AppCompatActivity {
         setContentView(R.layout.activity_song_dashboard);
         ButterKnife.bind(this);
         initFragment();
+        initToolBar();
 
+    }
+
+    private void initToolBar() {
+        setSupportActionBar(mToolbar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(true);
+            mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    finish();
+                }
+            });
+        }
+        setTitle(R.string.song_dashboard_title);
     }
 
     private void initFragment() {

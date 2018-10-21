@@ -67,6 +67,7 @@ public class RankFragment extends ToolbarBaseFragment implements RankContract.Vi
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mPresenter.start();
+
         return root;
     }
 
@@ -76,6 +77,11 @@ public class RankFragment extends ToolbarBaseFragment implements RankContract.Vi
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        setToolbarTitle("Billboard榜单");
+    }
 
     @Override
     public void showError() {

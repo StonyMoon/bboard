@@ -7,12 +7,10 @@
     android:orientation="vertical"
     tools:context="com.stonymoon.bboard.songdashboard.SongDashboardActivity">
 
-    <android.support.v7.widget.Toolbar
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
-        app:title="@string/song_dashboard_title"
-        app:titleTextColor="#FFF" />
+    <include layout="@layout/base_toolbar"
+
+        />
+
     <android.support.design.widget.TabLayout
         android:id="@+id/tab_song"
         android:layout_width="match_parent"
