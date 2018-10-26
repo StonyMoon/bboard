@@ -9,11 +9,15 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.bean.SingerBornBean;
+import com.stonymoon.bboard.singer.SingerActivity;
 import com.stonymoon.bboard.songdashboard.SongDashboardActivity;
 
 import java.util.List;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SingerBornAdapter extends RecyclerView.Adapter<SingerBornAdapter.SingerBornViewHolder> {
     private List<SingerBornBean.ResourceBean> mSingers;
@@ -44,7 +48,7 @@ public class SingerBornAdapter extends RecyclerView.Adapter<SingerBornAdapter.Si
             public void onClick(View view) {
                 int position = holder.getAdapterPosition();
                 String id = mSingers.get(position).getId() + "";
-                SongDashboardActivity.startActivity(mContext, id);
+                SingerActivity.startActivity(mContext, Integer.valueOf(id));
             }
         });
 
@@ -60,19 +64,20 @@ public class SingerBornAdapter extends RecyclerView.Adapter<SingerBornAdapter.Si
     public void onBindViewHolder(SingerBornAdapter.SingerBornViewHolder holder, int position) {
         SingerBornBean.ResourceBean singer = mSingers.get(position);
         holder.tvName.setText(singer.getName());
-
+        Glide.with(mContext).load(singer.getImage()).into(holder.ivAvatar);
 
     }
 
     static class SingerBornViewHolder extends RecyclerView.ViewHolder {
         TextView tvName;
         LinearLayout llItem;
+        CircleImageView ivAvatar;
 
-        public SingerBornViewHolder(View view) {
+        SingerBornViewHolder(View view) {
             super(view);
             tvName = (TextView) view.findViewById(R.id.tv_singer_born_name);
             llItem = (LinearLayout) view.findViewById(R.id.ll_singer_born);
-
+            ivAvatar = view.findViewById(R.id.iv_singer_born_avatar);
         }
 
     }

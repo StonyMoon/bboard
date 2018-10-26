@@ -9,6 +9,7 @@ import com.stonymoon.bboard.maindashboard.MainDashboardActivity;
 import com.stonymoon.bboard.rank.RankActivity;
 import com.stonymoon.bboard.search.SearchActivity;
 import com.stonymoon.bboard.singer.SingerActivity;
+import com.stonymoon.bboard.today.TodayActivity;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -16,7 +17,7 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity {
 
 
-    @OnClick({R.id.iv_main_itunes, R.id.iv_main_rank, R.id.iv_main_search})
+    @OnClick({R.id.iv_main_itunes, R.id.iv_main_rank, R.id.iv_main_search, R.id.iv_main_search_big, R.id.iv_main_today})
     void onButtonClick(View view) {
         switch (view.getId()) {
             case R.id.iv_main_itunes:
@@ -28,7 +29,12 @@ public class MainActivity extends AppCompatActivity {
             case R.id.iv_main_search:
                 SearchActivity.startActivity(this);
                 break;
-
+            case R.id.iv_main_search_big:
+                SearchActivity.startActivity(this);
+                break;
+            case R.id.iv_main_today:
+                TodayActivity.startActivity(this);
+                break;
         }
 
     }

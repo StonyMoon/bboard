@@ -16,38 +16,29 @@ public class SingerBornBean {
 
     public static class ResourceBean {
         /**
-         * born : 1975-11-20
-         * info : Bentley's musical style is considered to be more traditional than many of his contemporaries and often contains traditional themes of lost or forbidden love, drinking and cheating. "Lot of leavin' left to do", one of his biggest singles, is also reminiscent of Waylon Jennings' style of Outlaw country with Western Swing influences.  Early life
-         * Dierks Bentley was born in Phoenix, Arizona. Then he moved to Lawrenceville, New Jersey, where he attended the Lawrenceville School, graduating in 1993.[1] Read more about Dierks Bentley on Last.fm .
-         * image : https://draw.acharts.net/artist/dierks_bentley-54661df0f0f4a-l.jpeg
-         * type : Male
-         * id : 498
-         * name : Dierks Bentley
+         * id : 6
+         * image : https://draw.acharts.net/artist/2pac-54661e84acf7a-l.jpeg
+         * name : 2pac
+         * info : Tupac Amaru Shakur (June 16, 1971–September 13, 1996), also known by his stage names, Makaveli and 2Pac, was an American hip-hop artist, poet and actor. He is listed in the Guinness Book of World Records as the best-selling rap/hip-hop artist ever, having sold over 75 million albums worldwide, including 44.5 million sales in the United States alone. He has had 17 top ten singles in the United States. Read more about 2Pac on Last.fm .
          * area : United States
+         * type : Male
+         * born : 1971-6-16
          */
 
-        private String born;
-        private String info;
-        private String image;
-        private String type;
         private int id;
+        private String image;
         private String name;
+        private String info;
         private String area;
+        private String type;
+        private String born;
 
-        public String getBorn() {
-            return born;
+        public int getId() {
+            return id;
         }
 
-        public void setBorn(String born) {
-            this.born = born;
-        }
-
-        public String getInfo() {
-            return info;
-        }
-
-        public void setInfo(String info) {
-            this.info = info;
+        public void setId(int id) {
+            this.id = id;
         }
 
         public String getImage() {
@@ -58,22 +49,6 @@ public class SingerBornBean {
             this.image = image;
         }
 
-        public String getType() {
-            return type;
-        }
-
-        public void setType(String type) {
-            this.type = type;
-        }
-
-        public int getId() {
-            return id;
-        }
-
-        public void setId(int id) {
-            this.id = id;
-        }
-
         public String getName() {
             return name;
         }
@@ -82,12 +57,36 @@ public class SingerBornBean {
             this.name = name;
         }
 
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+
         public String getArea() {
             return area;
         }
 
         public void setArea(String area) {
             this.area = area;
+        }
+
+        public String getType() {
+            return type;
+        }
+
+        public void setType(String type) {
+            this.type = type;
+        }
+
+        public String getBorn() {
+            return born;
+        }
+
+        public void setBorn(String born) {
+            this.born = born;
         }
     }
 }

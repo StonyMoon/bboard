@@ -68,7 +68,7 @@ public class SingerFragment extends Fragment implements SingerContract.View {
     private SingerContract.Presenter mPresenter;
     private Context mContext;
     private SingerSongAdapter adapter = new SingerSongAdapter(new ArrayList<SingerBean.ResourceBean.SongsBean>());
-    private SingerBean bean;
+
 
     public SingerFragment() {
 
@@ -76,12 +76,6 @@ public class SingerFragment extends Fragment implements SingerContract.View {
 
     public static SingerFragment getInstance() {
         return new SingerFragment();
-    }
-
-    @OnClick(R.id.tv_singer_info)
-    void click() {
-        showDialog();
-
     }
 
     @Override
@@ -107,7 +101,6 @@ public class SingerFragment extends Fragment implements SingerContract.View {
 
     @Override
     public void showInfo(SingerBean bean) {
-        this.bean = bean;
         SingerBean.ResourceBean singer = bean.getResource();
         tvArea.setText(singer.getArea());
         tvBorn.setText(singer.getBorn());
@@ -125,7 +118,6 @@ public class SingerFragment extends Fragment implements SingerContract.View {
                 .into(ivAvatar);
 
         adapter.setData(bean.getResource().getSongs());
-
 
     }
 
@@ -165,27 +157,6 @@ public class SingerFragment extends Fragment implements SingerContract.View {
     public void onDestroyView() {
         super.onDestroyView();
         mUnbinder.unbind();
-    }
-
-    private void showDialog() {
-        LayoutInflater factory = LayoutInflater.from(mContext);//提示框
-        final View view = factory.inflate(R.layout.editbox_layout, null);//这里必须是final的
-        final EditText edit = (EditText) view.findViewById(R.id.editText);//获得输入框对象
-
-        new AlertDialog.Builder(mContext)
-                .setTitle("修改歌手信息")//提示框标题
-                .setView(view)
-                .setPositiveButton("修改",//提示框的两个按钮
-                        new android.content.DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialog,
-                                                int which) {
-
-                                MyApplication.putSinger(bean.getResource().getId(), edit.getText().toString());
-                                tvInfo.setText(edit.getText().toString());
-                            }
-                        }).setNegativeButton("取消", null).create().show();
-
     }
 
     @Override

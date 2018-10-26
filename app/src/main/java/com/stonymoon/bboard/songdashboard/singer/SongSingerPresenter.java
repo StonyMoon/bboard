@@ -3,6 +3,7 @@ package com.stonymoon.bboard.songdashboard.singer;
 import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.BillboardService;
 import com.stonymoon.bboard.bean.SongBean;
+import com.stonymoon.bboard.util.ToastUtil;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;

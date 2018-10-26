@@ -16,8 +16,11 @@
         android:id="@+id/circle_iv_singer_item"
         android:layout_width="36dp"
         android:layout_height="36dp"
-        android:layout_margin="16dp"
-        android:src="@mipmap/default_avator" />
+        android:layout_marginBottom="8dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginTop="8dp"
+        android:src="@mipmap/default_avatar" />
 
     <TextView
         android:id="@+id/tv_singer_item_name"
