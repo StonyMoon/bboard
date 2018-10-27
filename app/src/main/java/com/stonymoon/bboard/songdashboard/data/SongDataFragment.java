@@ -1,6 +1,9 @@
 package com.stonymoon.bboard.songdashboard.data;
 
 
+import android.annotation.SuppressLint;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.base.BaseFragment;
+import com.stonymoon.bboard.util.ToastUtil;
 
 import java.util.List;
 
@@ -34,6 +38,7 @@ public class SongDataFragment extends BaseFragment implements SongDataContract.V
     @BindView(R.id.tv_song_data_fiftieth_weeks)
     TextView tvFiftiethWeeks;
     private SongDataContract.Presenter mPresenter;
+    private String mRank = "";
 
     public static SongDataFragment getInstance() {
         return new SongDataFragment();
@@ -63,6 +68,7 @@ public class SongDataFragment extends BaseFragment implements SongDataContract.V
 
     }
 
+    @SuppressLint("SetTextI18n")
     @Override
     public void initData(List<Integer> list) {
         StringBuilder builder = new StringBuilder();
@@ -76,15 +82,20 @@ public class SongDataFragment extends BaseFragment implements SongDataContract.V
             if (i <= 10) tenthWeeks++;
             if (i <= 50) fiftiethWeeks++;
         }
-        tvRank.setText(builder.toString());
-        tvFirstWeeks.setText(firstWeeks + "");
-        tvTenthWeeks.setText(tenthWeeks + "");
-        tvFiftiethWeeks.setText(fiftiethWeeks + "");
-        tvTotalWeeks.setText(list.size() + "");
+        builder.deleteCharAt(builder.length() - 1);
+        mRank = builder.toString();
+        tvRank.setText(getString(R.string.song_rank) + mRank);
+        tvFirstWeeks.setText(getString(R.string.song_first) + firstWeeks);
+        tvTenthWeeks.setText(getString(R.string.song_tenth) + tenthWeeks);
+        tvFiftiethWeeks.setText(getString(R.string.song_fiftieth) + fiftiethWeeks);
+        tvTotalWeeks.setText(getString(R.string.song_total_weeks) + list.size());
     }
 
 
-    @OnClick(R.id.tv_song_data_rank)
+    @OnClick(R.id.tv_song_data_copy)
     public void onViewClicked() {
+        ClipboardManager cm = (ClipboardManager) mContext.getSystemService(Context.CLIPBOARD_SERVICE);
+        cm.setText(mRank);
+        ToastUtil.show(mContext, getString(R.string.copy_toast));
     }
 }

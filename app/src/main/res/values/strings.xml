@@ -13,6 +13,10 @@
     <string name="song_dashboard_title">歌曲信息</string>
 
     <string name="menu_itunes_collect">我的收藏</string>
-
-
+    <string name="song_rank">歌曲走势：</string>
+    <string name="song_first">榜首周数：</string>
+    <string name="song_tenth">前十周数：</string>
+    <string name="song_fiftieth">前50周数：</string>
+    <string name="song_total_weeks">在榜周数：</string>
+    <string name="copy_toast">走势已经复制到剪贴板了</string>
 </resources>

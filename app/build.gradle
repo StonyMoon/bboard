@@ -20,12 +20,8 @@ android {
 apply plugin: 'com.android.application'
 apply plugin: 'org.greenrobot.greendao' // apply plugin
 dependencies {
-
-
     // Dependencies for circle image
     implementation 'de.hdodenhof:circleimageview:2.2.0'
-
-
     compile 'com.android.support:design:25.3.1'
     // Dependencies for GreenDao
     compile 'org.greenrobot:greendao:3.2.2'
@@ -34,9 +30,7 @@ dependencies {
         exclude group: "com.android.support"
     }
     annotationProcessor 'com.github.bumptech.glide:compiler:4.6.1'
-
     compile 'jp.wasabeef:picasso-transformations:2.2.1'
-
     // Dependencies for MPCharts
     implementation 'com.github.PhilJay:MPAndroidChart:v3.0.3'
     // Dependencies for RxJava and RxAndroid
@@ -60,6 +54,7 @@ dependencies {
     compile 'com.squareup.retrofit2:retrofit:2.3.0'
     compile 'com.squareup.retrofit2:converter-gson:2.3.0'
     compile 'com.squareup.retrofit2:adapter-rxjava:2.3.0'
+    // Dependencies for bugly
     compile 'com.tencent.bugly:crashreport_upgrade:latest.release'
     compile 'com.tencent.bugly:nativecrashreport:latest.release'
     implementation fileTree(include: ['*.jar'], dir: 'libs')
@@ -73,6 +68,7 @@ dependencies {
     androidTestCompile 'org.mockito:mockito-android:2.13.0'
     androidTestImplementation 'com.android.support.test:runner:1.0.1'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+    implementation 'com.android.support:cardview-v7:26.1.0'
 }
 greendao {
     schemaVersion 1
