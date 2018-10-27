@@ -1,7 +1,14 @@
 package com.stonymoon.bboard;
 
+import android.support.annotation.NonNull;
+import android.support.design.widget.NavigationView;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.stonymoon.bboard.itunes.ItunesActivity;
@@ -11,10 +18,26 @@ import com.stonymoon.bboard.search.SearchActivity;
 import com.stonymoon.bboard.singer.SingerActivity;
 import com.stonymoon.bboard.today.TodayActivity;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
+    @BindView(R.id.drawer)
+    DrawerLayout mDrawerLayout;
+    @BindView(R.id.nav_main)
+    NavigationView mNavigationView;
+    @BindView(R.id.toolbar_main)
+    Toolbar mToolBar;
+
+    public boolean onOptionsItemSelected(MenuItem item) {
+        //设置菜单键
+        if (item.getItemId() == android.R.id.home) {
+            mDrawerLayout.openDrawer(Gravity.START);
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
 
     @OnClick({R.id.iv_main_itunes, R.id.iv_main_rank, R.id.iv_main_search, R.id.iv_main_search_big, R.id.iv_main_today})
@@ -44,5 +67,21 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+        mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                return false;
+            }
+        });
+        setSupportActionBar(mToolBar);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu);
+        }
     }
+
 }
