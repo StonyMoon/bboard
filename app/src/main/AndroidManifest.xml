@@ -46,7 +46,8 @@
                 android:resource="@xml/provider_paths" />
         </provider>
 
-        <activity android:name=".today.TodayActivity"></activity>
+        <activity android:name=".today.TodayActivity" />
+        <activity android:name=".version.VersionActivity"></activity>
     </application>
 
 </manifest>

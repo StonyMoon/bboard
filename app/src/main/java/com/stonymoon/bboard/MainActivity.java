@@ -1,6 +1,8 @@
 package com.stonymoon.bboard;
 
+import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -17,6 +19,8 @@ import com.stonymoon.bboard.rank.RankActivity;
 import com.stonymoon.bboard.search.SearchActivity;
 import com.stonymoon.bboard.singer.SingerActivity;
 import com.stonymoon.bboard.today.TodayActivity;
+import com.stonymoon.bboard.version.VersionActivity;
+import com.tencent.bugly.beta.Beta;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -70,7 +74,8 @@ public class MainActivity extends AppCompatActivity {
         mNavigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                return false;
+                VersionActivity.startActivity(MainActivity.this);
+                return true;
             }
         });
         setSupportActionBar(mToolBar);
@@ -82,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu);
         }
+
+        Beta.checkUpgrade(false, true);
     }
+
 
 }

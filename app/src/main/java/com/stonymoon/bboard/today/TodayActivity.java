@@ -24,7 +24,7 @@ public class TodayActivity extends AppCompatActivity {
         setContentView(R.layout.activity_today);
         ButterKnife.bind(this);
         TodayFragment todayFragment = (TodayFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.fl_rank_content);
+                .findFragmentById(R.id.fl_today_content);
         if (todayFragment == null) {
             todayFragment = TodayFragment.getInstance();
         }

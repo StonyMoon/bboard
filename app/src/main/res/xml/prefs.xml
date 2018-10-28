@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+    <PreferenceCategory android:title="基本信息">
+        <Preference
+            android:key="prefs_update"
+            android:summary="版本号V1.1"
+            android:title="检查更新" />
+        <Preference
+            android:summary="有程序出错或者有想要添加的功能可以联系我 2365975967@qq.com"
+            android:title="联系作者" />
+        <Preference
+            android:summary="请我喝杯咖啡吧 支付宝 2365975967@qq.com"
+            android:title="捐赠" />
+
+    </PreferenceCategory>
+
+
+</PreferenceScreen>
