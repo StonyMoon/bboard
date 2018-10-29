@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.nav_main)
     NavigationView mNavigationView;
     @BindView(R.id.toolbar_main)
-    Toolbar mToolBar;
+    Toolbar mToolbar;
 
     public boolean onOptionsItemSelected(MenuItem item) {
         //设置菜单键
@@ -78,7 +78,13 @@ public class MainActivity extends AppCompatActivity {
                 return true;
             }
         });
-        setSupportActionBar(mToolBar);
+        initToolbar();
+
+        Beta.checkUpgrade(false, true);
+    }
+
+    private void initToolbar() {
+        setSupportActionBar(mToolbar);
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             actionBar.setDisplayHomeAsUpEnabled(true);
@@ -87,8 +93,6 @@ public class MainActivity extends AppCompatActivity {
             actionBar.setDisplayShowTitleEnabled(true);
             actionBar.setHomeAsUpIndicator(R.mipmap.ic_menu);
         }
-
-        Beta.checkUpgrade(false, true);
     }
 
 

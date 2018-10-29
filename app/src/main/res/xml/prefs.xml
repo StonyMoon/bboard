@@ -3,14 +3,14 @@
     <PreferenceCategory android:title="基本信息">
         <Preference
             android:key="prefs_update"
-            android:summary="版本号V1.1"
-            android:title="检查更新" />
+            android:summary="@string/version"
+            android:title="@string/check_upgrade" />
         <Preference
-            android:summary="有程序出错或者有想要添加的功能可以联系我 2365975967@qq.com"
-            android:title="联系作者" />
+            android:summary="@string/contact_detail"
+            android:title="@string/contact_author" />
         <Preference
-            android:summary="请我喝杯咖啡吧 支付宝 2365975967@qq.com"
-            android:title="捐赠" />
+            android:summary="@string/donation_detail"
+            android:title="@string/donation" />
 
     </PreferenceCategory>
 

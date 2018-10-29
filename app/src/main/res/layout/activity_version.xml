@@ -6,6 +6,8 @@
     android:orientation="vertical"
     tools:context="com.stonymoon.bboard.version.VersionActivity">
 
+    <include layout="@layout/base_toolbar" />
+
     <FrameLayout
         android:id="@+id/fl_version_content"
         android:layout_width="match_parent"

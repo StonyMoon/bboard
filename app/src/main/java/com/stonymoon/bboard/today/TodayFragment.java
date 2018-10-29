@@ -72,6 +72,7 @@ public class TodayFragment extends ToolbarBaseFragment implements TodayContract.
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mPresenter.start();
+        setToolbarTitle(getString(R.string.singer_born));
         return root;
     }
 
