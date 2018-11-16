@@ -1,6 +1,8 @@
 package com.stonymoon.bboard.bean;
 
 
+import android.support.annotation.NonNull;
+
 import java.util.List;
 
 public class RankBean {
@@ -16,7 +18,7 @@ public class RankBean {
         this.resource = resource;
     }
 
-    public static class ResourceBean {
+    public static class ResourceBean implements Comparable {
         /**
          * weeks : 5
          * song : {"id":111437,"title":"God's Plan","singers":["Drake"]}
@@ -30,6 +32,11 @@ public class RankBean {
         private int previous;
         private int peak;
         private int rank;
+
+        @Override
+        public int compareTo(@NonNull Object o) {
+            return rank - ((ResourceBean) o).rank;
+        }
 
         public int getWeeks() {
             return weeks;

@@ -9,6 +9,10 @@
             android:summary="@string/contact_detail"
             android:title="@string/contact_author" />
         <Preference
+            android:summary="@string/web_detail"
+            android:title="@string/web" />
+        <Preference
+            android:key="donation"
             android:summary="@string/donation_detail"
             android:title="@string/donation" />
 

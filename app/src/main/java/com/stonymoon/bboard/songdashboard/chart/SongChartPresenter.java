@@ -3,6 +3,7 @@ package com.stonymoon.bboard.songdashboard.chart;
 import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.BillboardService;
 import com.stonymoon.bboard.bean.SongBean;
+import com.stonymoon.bboard.util.ToastUtil;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -42,6 +43,9 @@ public class SongChartPresenter implements SongChartContract.Presenter {
                     @Override
                     public void onNext(SongBean songBean) {
                         mView.showProgressBar(false);
+                        if (songBean.getResource().getRanks().size() == 0) {
+                            return;
+                        }
                         mView.showChart(songBean.getResource().getRanks());
 
                     }

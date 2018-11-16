@@ -33,6 +33,7 @@ public class TodayPresenter implements TodayContract.Presenter {
                     public void onError(Throwable e) {
                         mView.showProgressBar(false);
                         mView.showError();
+
                     }
 
                     @Override

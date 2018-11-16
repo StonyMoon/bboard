@@ -11,10 +11,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.stonymoon.bboard.R;
-import com.stonymoon.bboard.bean.SingerBornBean;
 import com.stonymoon.bboard.bean.SongBean;
 import com.stonymoon.bboard.singer.SingerActivity;
-import com.stonymoon.bboard.songdashboard.SongDashboardActivity;
 
 import java.util.List;
 

@@ -47,7 +47,7 @@
         </provider>
 
         <activity android:name=".today.TodayActivity" />
-        <activity android:name=".version.VersionActivity"></activity>
+        <activity android:name=".version.VersionActivity" />
     </application>
 
 </manifest>

@@ -6,6 +6,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.stonymoon.bboard.R;
 
@@ -44,6 +45,12 @@ public class VersionActivity extends AppCompatActivity {
             actionBar.setDisplayShowTitleEnabled(true);
             setTitle(getString(R.string.version_info));
         }
+        mToolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
 
     }
 }

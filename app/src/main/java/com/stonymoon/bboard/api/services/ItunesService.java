@@ -9,7 +9,7 @@ import rx.Observable;
 
 
 public interface ItunesService {
-    @GET("http://120.24.238.200:5000/itunes")
+    @GET("/itunes")
     Observable<ItunesBean> getManagerData();
 
 

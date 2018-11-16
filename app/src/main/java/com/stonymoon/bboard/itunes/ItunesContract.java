@@ -15,8 +15,6 @@ public interface ItunesContract {
     interface View extends LoadingBaseView<ItunesPresenter> {
 
 
-        void setTitle(String title);
-
         void showItunesList(List<ItunesSong> list);
 
         boolean isActive();

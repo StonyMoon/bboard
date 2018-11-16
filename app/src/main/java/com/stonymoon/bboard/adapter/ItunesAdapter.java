@@ -60,7 +60,7 @@ public class ItunesAdapter extends RecyclerView.Adapter<ItunesAdapter.ItunesView
     public void onBindViewHolder(final ItunesViewHolder holder, int position) {
         ItunesSong song = mSongs.get(position);
         holder.tvTitle.setText(song.getTitle());
-        String point = String.format("%.2f", song.getNowPoint());
+        String point = String.format("%.4f", song.getNowPoint());
         holder.tvPoint.setText(point);
         holder.tvRank.setText(song.getPosition() + "");
 

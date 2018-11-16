@@ -3,7 +3,10 @@ package com.stonymoon.bboard.itunes;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Color;
+import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -63,19 +66,40 @@ public class ItunesActivity extends AppCompatActivity implements ItunesContract.
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_itunes);
         ButterKnife.bind(this);
+        Resources res = getResources();
+        Configuration config = new Configuration();
+        config.setToDefaults();
+        res.updateConfiguration(config, res.getDisplayMetrics());
+
         mListAdapter = new ItunesAdapter(new ArrayList<ItunesSong>(0));
         recyclerItunes.setLayoutManager(new LinearLayoutManager(this));
         recyclerItunes.setAdapter(mListAdapter);
+
         DaggerItunesComponent.builder()
                 .itunesModel(new ItunesModel(this))
                 .build()
                 .inject(this);
+        initToolbar();
 
     }
 
-    @Override
-    public void setTitle(String title) {
-        this.setTitle(title);
+    private void initToolbar() {
+        setSupportActionBar(tbItunes);
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            actionBar.setDisplayHomeAsUpEnabled(true);
+            actionBar.setHomeButtonEnabled(true);
+            actionBar.setDisplayShowHomeEnabled(true);
+            actionBar.setDisplayShowTitleEnabled(true);
+            actionBar.setTitle("Itunes");
+        }
+        tbItunes.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
     }
 
     @Override

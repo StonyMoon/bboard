@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Bboard</string>
+    <string name="app_name">爱榜单</string>
     <string name="itunes">itunes</string>
     <string name="rank">rank</string>
     <string name="song_dashboard">Song Board</string>
@@ -28,8 +28,10 @@
     <string name="contact_author">联系作者</string>
     <string name="version">版本号V1.1</string>
     <string name="check_upgrade">检查更新</string>
-    <string name="donation">捐赠</string>
-    <string name="donation_detail">你的捐赠能帮助我开发出更好的程序哟 支付宝 2365975967@qq.com</string>
+    <string name="donation">请作者喝杯咖啡</string>
+    <string name="donation_detail">您的捐赠能帮助我写出更好的作品</string>
+    <string name="web">官网</string>
+    <string name="web_detail">官网正在施工中</string>
 
 
 </resources>
