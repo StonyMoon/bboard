@@ -8,7 +8,7 @@ import rx.Observable;
 
 
 public interface ItunesService {
-    @GET("/v1/itunes")
+    @GET("itunes")
     Observable<ItunesBean> getManagerData();
 
 

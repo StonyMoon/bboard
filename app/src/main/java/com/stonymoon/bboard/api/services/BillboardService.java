@@ -11,24 +11,24 @@ import retrofit2.http.Path;
 import rx.Observable;
 
 public interface BillboardService {
-    @GET("/v1/billboards")
+    @GET("billboards")
     Observable<RankBean> getBillBoard();
 
-    @GET("/v1/songs/{id}")
+    @GET("songs/{id}")
     Observable<SongBean> getRank(@Path("id") String id);
 
-    @GET("/search/songs/{text}")
+    @GET("search/songs/{text}")
     Observable<SearchBean> searchSong(@Path("text") String text);
 
-    @GET("/singers/{id}")
+    @GET("singers/{id}")
     Observable<SingerBean> getSinger(@Path("id") int id);
 
 
-    @GET("/today/singers")
+    @GET("today/singers")
     Observable<SingerBornBean> getSingerByBorn();
 
     // 这个API不一定会被用到
-    @GET("/search/singer/{text}")
+    @GET("search/singer/{text}")
     Observable<SingerBean> searchSinger(@Path("text") String text);
 
 

@@ -30,7 +30,7 @@ public class BaseDataManager {
                 .writeTimeout(10, TimeUnit.SECONDS)
                 .build();
         mRetrofit = new Retrofit.Builder()
-                .baseUrl("http://www.zjmeow.info:8618/")
+                .baseUrl("http://www.zjmeow.info:8618/v1/")
                 .client(client)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
