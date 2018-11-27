@@ -47,7 +47,7 @@ public class TodayFragment extends ToolbarBaseFragment implements TodayContract.
     }
 
     @Override
-    public void showSinger(List<SingerBornBean.ResourceBean> singersBeans) {
+    public void showSinger(List<SingerBornBean.DataBean> singersBeans) {
         mAdapter.setData(singersBeans);
     }
 
@@ -68,7 +68,7 @@ public class TodayFragment extends ToolbarBaseFragment implements TodayContract.
 
         View root = inflater.inflate(R.layout.fragment_today, container, false);
         mUnbinder = ButterKnife.bind(this, root);
-        mAdapter = new SingerBornAdapter(new ArrayList<SingerBornBean.ResourceBean>());
+        mAdapter = new SingerBornAdapter(new ArrayList<SingerBornBean.DataBean>());
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         mPresenter.start();

@@ -3,34 +3,55 @@ package com.stonymoon.bboard.bean;
 import java.util.List;
 
 public class SearchBean {
-    private List<ResourceBean> resource;
 
-    public List<ResourceBean> getResource() {
-        return resource;
+
+    private String errorCode;
+    private String message;
+    private boolean success;
+    private List<DataBean> data;
+
+    public String getErrorCode() {
+        return errorCode;
     }
 
-    public void setResource(List<ResourceBean> resource) {
-        this.resource = resource;
+    public void setErrorCode(String errorCode) {
+        this.errorCode = errorCode;
     }
 
-    public static class ResourceBean {
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public boolean isSuccess() {
+        return success;
+    }
+
+    public void setSuccess(boolean success) {
+        this.success = success;
+    }
+
+    public List<DataBean> getData() {
+        return data;
+    }
+
+    public void setData(List<DataBean> data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
         /**
-         * singers : [{"name":"Erykah Badu","id":593},{"name":"Common","id":408}]
-         * title : Love Of My Life (an Ode To Hip Hop)
-         * id : 40
+         * id : 0
+         * singers : [{"id":0,"image":"string","name":"string"}]
+         * title : string
          */
 
-        private String title;
         private int id;
+        private String title;
         private List<SingersBean> singers;
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
 
         public int getId() {
             return id;
@@ -38,6 +59,14 @@ public class SearchBean {
 
         public void setId(int id) {
             this.id = id;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
         }
 
         public List<SingersBean> getSingers() {
@@ -50,20 +79,14 @@ public class SearchBean {
 
         public static class SingersBean {
             /**
-             * name : Erykah Badu
-             * id : 593
+             * id : 0
+             * image : string
+             * name : string
              */
 
-            private String name;
             private int id;
-
-            public String getName() {
-                return name;
-            }
-
-            public void setName(String name) {
-                this.name = name;
-            }
+            private String image;
+            private String name;
 
             public int getId() {
                 return id;
@@ -71,6 +94,22 @@ public class SearchBean {
 
             public void setId(int id) {
                 this.id = id;
+            }
+
+            public String getImage() {
+                return image;
+            }
+
+            public void setImage(String image) {
+                this.image = image;
+            }
+
+            public String getName() {
+                return name;
+            }
+
+            public void setName(String name) {
+                this.name = name;
             }
         }
     }

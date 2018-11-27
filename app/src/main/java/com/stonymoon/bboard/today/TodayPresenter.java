@@ -39,7 +39,7 @@ public class TodayPresenter implements TodayContract.Presenter {
                     @Override
                     public void onNext(SingerBornBean singerBornBean) {
                         mView.showProgressBar(false);
-                        mView.showSinger(singerBornBean.getResource());
+                        mView.showSinger(singerBornBean.getData());
                     }
                 });
 

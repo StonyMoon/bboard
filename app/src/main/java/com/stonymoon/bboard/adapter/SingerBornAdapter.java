@@ -13,22 +13,21 @@ import com.bumptech.glide.Glide;
 import com.stonymoon.bboard.R;
 import com.stonymoon.bboard.bean.SingerBornBean;
 import com.stonymoon.bboard.singer.SingerActivity;
-import com.stonymoon.bboard.songdashboard.SongDashboardActivity;
 
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SingerBornAdapter extends RecyclerView.Adapter<SingerBornAdapter.SingerBornViewHolder> {
-    private List<SingerBornBean.ResourceBean> mSingers;
+    private List<SingerBornBean.DataBean> mSingers;
     private Context mContext;
 
-    public SingerBornAdapter(List<SingerBornBean.ResourceBean> singers) {
+    public SingerBornAdapter(List<SingerBornBean.DataBean> singers) {
         mSingers = singers;
     }
 
 
-    public void setData(List<SingerBornBean.ResourceBean> songs) {
+    public void setData(List<SingerBornBean.DataBean> songs) {
         mSingers = songs;
         notifyDataSetChanged();
     }
@@ -62,7 +61,7 @@ public class SingerBornAdapter extends RecyclerView.Adapter<SingerBornAdapter.Si
     }
 
     public void onBindViewHolder(SingerBornAdapter.SingerBornViewHolder holder, int position) {
-        SingerBornBean.ResourceBean singer = mSingers.get(position);
+        SingerBornBean.DataBean singer = mSingers.get(position);
         holder.tvName.setText(singer.getName());
         if (singer.getImage() != null) {
             Glide.with(mContext).load(singer.getImage()).into(holder.ivAvatar);

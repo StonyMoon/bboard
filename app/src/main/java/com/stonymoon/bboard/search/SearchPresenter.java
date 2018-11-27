@@ -5,7 +5,6 @@ import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.BillboardService;
 import com.stonymoon.bboard.bean.SearchBean;
 
-
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -46,10 +45,10 @@ public class SearchPresenter implements SearchContract.Presenter {
                     @Override
                     public void onNext(SearchBean searchBean) {
                         mView.showProgressBar(false);
-                        if (searchBean.getResource().size() == 0) {
+                        if (searchBean.getData().size() == 0) {
                             mView.showNoResult(true);
                         }
-                        mView.showList(searchBean.getResource());
+                        mView.showList(searchBean.getData());
 
                     }
                 });

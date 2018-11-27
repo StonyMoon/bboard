@@ -1,13 +1,11 @@
 package com.stonymoon.bboard.singer;
 
 import android.content.Context;
-import android.content.DialogInterface;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.ActionBar;
-import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -15,11 +13,9 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-
 
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
@@ -33,7 +29,6 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 import butterknife.Unbinder;
 import de.hdodenhof.circleimageview.CircleImageView;
 import jp.wasabeef.picasso.transformations.BlurTransformation;
@@ -67,7 +62,7 @@ public class SingerFragment extends Fragment implements SingerContract.View {
     private Unbinder mUnbinder;
     private SingerContract.Presenter mPresenter;
     private Context mContext;
-    private SingerSongAdapter adapter = new SingerSongAdapter(new ArrayList<SingerBean.ResourceBean.SongsBean>());
+    private SingerSongAdapter adapter = new SingerSongAdapter(new ArrayList<SingerBean.DataBean.SongsBean>());
 
 
     public SingerFragment() {
@@ -101,7 +96,7 @@ public class SingerFragment extends Fragment implements SingerContract.View {
 
     @Override
     public void showInfo(SingerBean bean) {
-        SingerBean.ResourceBean singer = bean.getResource();
+        SingerBean.DataBean singer = bean.getData();
         tvArea.setText(singer.getArea());
         tvBorn.setText(singer.getBorn());
         if (MyApplication.getSinger(singer.getId()) == null) {
@@ -117,7 +112,7 @@ public class SingerFragment extends Fragment implements SingerContract.View {
                 .load(singer.getImage())
                 .into(ivAvatar);
 
-        adapter.setData(bean.getResource().getSongs());
+        adapter.setData(bean.getData().getSongs());
 
     }
 

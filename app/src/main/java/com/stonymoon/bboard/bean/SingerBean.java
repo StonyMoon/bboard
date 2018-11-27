@@ -5,48 +5,51 @@ import java.util.List;
 
 public class SingerBean {
 
-    private ResourceBean resource;
+    private boolean success;
+    private String message;
+    private DataBean data;
 
-    public ResourceBean getResource() {
-        return resource;
+    public boolean isSuccess() {
+        return success;
     }
 
-    public void setResource(ResourceBean resource) {
-        this.resource = resource;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
-    public static class ResourceBean {
-        private String name;
-        private String info;
-        private String area;
-        private String image;
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public DataBean getData() {
+        return data;
+    }
+
+    public void setData(DataBean data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
+
         private int id;
+        private String image;
+        private String name;
+        private String area;
         private String type;
         private String born;
+        private String info;
         private List<SongsBean> songs;
 
-        public String getName() {
-            return name;
+        public int getId() {
+            return id;
         }
 
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getInfo() {
-            return info;
-        }
-
-        public void setInfo(String info) {
-            this.info = info;
-        }
-
-        public String getArea() {
-            return area;
-        }
-
-        public void setArea(String area) {
-            this.area = area;
+        public void setId(int id) {
+            this.id = id;
         }
 
         public String getImage() {
@@ -57,12 +60,20 @@ public class SingerBean {
             this.image = image;
         }
 
-        public int getId() {
-            return id;
+        public String getName() {
+            return name;
         }
 
-        public void setId(int id) {
-            this.id = id;
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getArea() {
+            return area;
+        }
+
+        public void setArea(String area) {
+            this.area = area;
         }
 
         public String getType() {
@@ -81,6 +92,14 @@ public class SingerBean {
             this.born = born;
         }
 
+        public String getInfo() {
+            return info;
+        }
+
+        public void setInfo(String info) {
+            this.info = info;
+        }
+
         public List<SongsBean> getSongs() {
             return songs;
         }
@@ -91,12 +110,14 @@ public class SingerBean {
 
         public static class SongsBean {
             /**
-             * id : 43864
-             * title : Mad World
+             * id : 79125
+             * title : Thinking About You
+             * singers : [{"id":150,"name":"Ayah Marar"}]
              */
 
             private int id;
             private String title;
+            private List<SingersBean> singers;
 
             public int getId() {
                 return id;
@@ -112,6 +133,40 @@ public class SingerBean {
 
             public void setTitle(String title) {
                 this.title = title;
+            }
+
+            public List<SingersBean> getSingers() {
+                return singers;
+            }
+
+            public void setSingers(List<SingersBean> singers) {
+                this.singers = singers;
+            }
+
+            public static class SingersBean {
+                /**
+                 * id : 150
+                 * name : Ayah Marar
+                 */
+
+                private int id;
+                private String name;
+
+                public int getId() {
+                    return id;
+                }
+
+                public void setId(int id) {
+                    this.id = id;
+                }
+
+                public String getName() {
+                    return name;
+                }
+
+                public void setName(String name) {
+                    this.name = name;
+                }
             }
         }
     }

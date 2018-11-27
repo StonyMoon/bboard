@@ -60,7 +60,7 @@ public class SongDataFragment extends BaseFragment implements SongDataContract.V
 
     @Override
     public void showError() {
-
+        ToastUtil.show(mContext, getResources().getString(R.string.data_not_found));
     }
 
     @Override

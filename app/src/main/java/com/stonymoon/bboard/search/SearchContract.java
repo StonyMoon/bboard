@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface SearchContract {
     interface View extends LoadingBaseView<Presenter> {
-        void showList(List<SearchBean.ResourceBean> list);
+        void showList(List<SearchBean.DataBean> list);
 
         void showNoResult(boolean isShow);
 

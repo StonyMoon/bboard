@@ -61,7 +61,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
 
 
     @Override
-    public void showList(List<SearchBean.ResourceBean> list) {
+    public void showList(List<SearchBean.DataBean> list) {
         mAdapter.setData(list);
     }
 
@@ -88,7 +88,7 @@ public class SearchFragment extends BaseFragment implements SearchContract.View 
 
         View root = inflater.inflate(R.layout.fragment_search, container, false);
         mUnbinder = ButterKnife.bind(this, root);
-        mAdapter = new SearchAdapter(new ArrayList<SearchBean.ResourceBean>());
+        mAdapter = new SearchAdapter(new ArrayList<SearchBean.DataBean>());
         mRecyclerView.setAdapter(mAdapter);
         mRecyclerView.setLayoutManager(new LinearLayoutManager(mContext));
         ivSearch.setOnClickListener(new View.OnClickListener() {

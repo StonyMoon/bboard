@@ -27,7 +27,7 @@ public class SongSingerFragment extends BaseFragment implements SongSingerContra
     @BindView(R.id.recycler_song_dashboard_singer)
     RecyclerView mRecycler;
     private SongSingerContract.Presenter mPresenter;
-    private List<SongBean.ResourceBean.SingersBean> mSingerList = new ArrayList<>();
+    private List<SongBean.DataBean.SingersBean> mSingerList = new ArrayList<>();
     private SingerItemAdapter adapter = new SingerItemAdapter(mSingerList);
 
     public static SongSingerFragment getInstance() {
@@ -60,7 +60,7 @@ public class SongSingerFragment extends BaseFragment implements SongSingerContra
     }
 
     @Override
-    public void showSinger(List<SongBean.ResourceBean.SingersBean> singersBeans) {
+    public void showSinger(List<SongBean.DataBean.SingersBean> singersBeans) {
         mSingerList.addAll(singersBeans);
         adapter.notifyDataSetChanged();
     }

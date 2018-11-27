@@ -19,15 +19,15 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class SingerItemAdapter extends RecyclerView.Adapter<SingerItemAdapter.SingerBornViewHolder> {
-    private List<SongBean.ResourceBean.SingersBean> mSingers;
+    private List<SongBean.DataBean.SingersBean> mSingers;
     private Context mContext;
 
-    public SingerItemAdapter(List<SongBean.ResourceBean.SingersBean> singers) {
+    public SingerItemAdapter(List<SongBean.DataBean.SingersBean> singers) {
         mSingers = singers;
     }
 
 
-    public void setData(List<SongBean.ResourceBean.SingersBean> songs) {
+    public void setData(List<SongBean.DataBean.SingersBean> songs) {
         mSingers = songs;
         notifyDataSetChanged();
     }
@@ -61,7 +61,7 @@ public class SingerItemAdapter extends RecyclerView.Adapter<SingerItemAdapter.Si
     }
 
     public void onBindViewHolder(SingerItemAdapter.SingerBornViewHolder holder, int position) {
-        SongBean.ResourceBean.SingersBean singer = mSingers.get(position);
+        SongBean.DataBean.SingersBean singer = mSingers.get(position);
         holder.tvName.setText(singer.getName());
         if (singer.getImage() != null) {
             Glide.with(mContext).load(singer.getImage()).into(holder.ivSinger);

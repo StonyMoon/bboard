@@ -16,15 +16,15 @@ import java.util.List;
 
 
 public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
-    private List<SearchBean.ResourceBean> mSongs;
+    private List<SearchBean.DataBean> mSongs;
     private Context mContext;
 
-    public SearchAdapter(List<SearchBean.ResourceBean> songs) {
+    public SearchAdapter(List<SearchBean.DataBean> songs) {
         mSongs = songs;
     }
 
 
-    public void setData(List<SearchBean.ResourceBean> songs) {
+    public void setData(List<SearchBean.DataBean> songs) {
         mSongs = songs;
         notifyDataSetChanged();
     }
@@ -59,7 +59,7 @@ public class SearchAdapter extends RecyclerView.Adapter<SearchAdapter.SearchView
     }
 
     public void onBindViewHolder(SearchAdapter.SearchViewHolder holder, int position) {
-        SearchBean.ResourceBean song = mSongs.get(position);
+        SearchBean.DataBean song = mSongs.get(position);
         holder.tvTitle.setText(song.getTitle());
         holder.tvSinger.setText(song.getSingers().get(0).getName());
 

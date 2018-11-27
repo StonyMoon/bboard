@@ -12,7 +12,7 @@ import java.util.List;
 
 public interface SongSingerContract {
     interface View extends LoadingBaseView<SongSingerContract.Presenter> {
-        void showSinger(List<SongBean.ResourceBean.SingersBean> singersBeans);
+        void showSinger(List<SongBean.DataBean.SingersBean> singersBeans);
 
         void setTitle(String title);
     }

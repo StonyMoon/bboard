@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface RankContract {
     interface View extends LoadingBaseView<Presenter> {
-        void showList(List<RankBean.ResourceBean> list);
+        void showList(List<RankBean.DataBean> list);
 
     }
 

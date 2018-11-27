@@ -9,7 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.stonymoon.bboard.R;
-import com.stonymoon.bboard.bean.SearchBean;
 import com.stonymoon.bboard.bean.SingerBean;
 import com.stonymoon.bboard.songdashboard.SongDashboardActivity;
 
@@ -17,15 +16,15 @@ import java.util.List;
 
 
 public class SingerSongAdapter extends RecyclerView.Adapter<SearchAdapter.SearchViewHolder> {
-    private List<SingerBean.ResourceBean.SongsBean> mSongs;
+    private List<SingerBean.DataBean.SongsBean> mSongs;
     private Context mContext;
 
-    public SingerSongAdapter(List<SingerBean.ResourceBean.SongsBean> songs) {
+    public SingerSongAdapter(List<SingerBean.DataBean.SongsBean> songs) {
         mSongs = songs;
     }
 
 
-    public void setData(List<SingerBean.ResourceBean.SongsBean> songs) {
+    public void setData(List<SingerBean.DataBean.SongsBean> songs) {
         mSongs = songs;
         notifyDataSetChanged();
     }
@@ -60,7 +59,7 @@ public class SingerSongAdapter extends RecyclerView.Adapter<SearchAdapter.Search
     }
 
     public void onBindViewHolder(SearchAdapter.SearchViewHolder holder, int position) {
-        SingerBean.ResourceBean.SongsBean song = mSongs.get(position);
+        SingerBean.DataBean.SongsBean song = mSongs.get(position);
         holder.tvTitle.setText(song.getTitle());
         holder.tvSinger.setText("");
 

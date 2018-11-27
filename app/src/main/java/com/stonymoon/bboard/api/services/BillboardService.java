@@ -11,20 +11,20 @@ import retrofit2.http.Path;
 import rx.Observable;
 
 public interface BillboardService {
-    @GET("/billboard/{date}")
-    Observable<RankBean> getBillBoard(@Path("date") String date);
+    @GET("/v1/billboards")
+    Observable<RankBean> getBillBoard();
 
-    @GET("/song/{id}")
+    @GET("/v1/songs/{id}")
     Observable<SongBean> getRank(@Path("id") String id);
 
-    @GET("/search/song/{text}")
+    @GET("/search/songs/{text}")
     Observable<SearchBean> searchSong(@Path("text") String text);
 
-    @GET("/singer/songs/{id}")
+    @GET("/singers/{id}")
     Observable<SingerBean> getSinger(@Path("id") int id);
 
 
-    @GET("/search/singer/born")
+    @GET("/today/singers")
     Observable<SingerBornBean> getSingerByBorn();
 
     // 这个API不一定会被用到

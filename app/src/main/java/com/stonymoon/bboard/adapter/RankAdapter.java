@@ -11,24 +11,23 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.stonymoon.bboard.R;
-import com.stonymoon.bboard.bean.RankBean;
 import com.stonymoon.bboard.songdashboard.SongDashboardActivity;
 
-import static com.stonymoon.bboard.bean.RankBean.ResourceBean;
-
 import java.util.List;
+
+import static com.stonymoon.bboard.bean.RankBean.DataBean;
 
 
 public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ItunesViewHolder> {
 
-    private List<ResourceBean> mRankList;
+    private List<DataBean> mRankList;
     private Context mContext;
 
-    public RankAdapter(List<ResourceBean> s) {
+    public RankAdapter(List<DataBean> s) {
         mRankList = s;
     }
 
-    public void setData(List<ResourceBean> list) {
+    public void setData(List<DataBean> list) {
         this.mRankList = list;
         notifyDataSetChanged();
     }
@@ -43,8 +42,8 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ItunesViewHold
             @Override
             public void onClick(View v) {
                 int position = holder.getAdapterPosition();
-                ResourceBean b = mRankList.get(position);
-                SongDashboardActivity.startActivity(mContext, b.getSong().getId() + "");
+                DataBean b = mRankList.get(position);
+                SongDashboardActivity.startActivity(mContext, b.getSongId() + "");
 
             }
         });
@@ -60,12 +59,13 @@ public class RankAdapter extends RecyclerView.Adapter<RankAdapter.ItunesViewHold
     }
 
     public void onBindViewHolder(ItunesViewHolder holder, int position) {
-        ResourceBean bean = mRankList.get(position);
+        DataBean bean = mRankList.get(position);
         holder.rankText.setText(bean.getRank() + "");
-        List<String> singers = bean.getSong().getSingers();
-        //check null,if null then set empty string
-        holder.authorText.setText((singers == null || singers.get(0) == null) ? "" : singers.get(0));
-        holder.titleText.setText(bean.getSong().getTitle());
+
+        List<DataBean.SingersBean> singers = bean.getSingers();
+        //check null, if null then set empty string
+        holder.authorText.setText((singers == null || singers.get(0) == null) ? "" : singers.get(0).getName());
+        holder.titleText.setText(bean.getTitle());
         if (bean.getPrevious() > bean.getRank()) {
             holder.rankImage.setImageResource(R.mipmap.up_arrow);
         } else if (bean.getPrevious() == bean.getRank()) {

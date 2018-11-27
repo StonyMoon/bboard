@@ -4,36 +4,53 @@ import java.util.List;
 
 public class SongBean {
 
-    private ResourceBean resource;
 
-    public ResourceBean getResource() {
-        return resource;
+    /**
+     * success : true
+     * message : OK
+     * data : {"singers":[{"id":148,"image":"https://draw.acharts.net/artist/avril_lavigne-54661eb150e10-l.png","name":"Avril Lavigne"}],"billboards":[{"rank":71,"date":"2003-04-26T00:00:00.000+0000"},{"rank":68,"date":"2003-05-03T00:00:00.000+0000"},{"rank":64,"date":"2003-05-10T00:00:00.000+0000"},{"rank":64,"date":"2003-05-17T00:00:00.000+0000"},{"rank":70,"date":"2003-05-24T00:00:00.000+0000"},{"rank":93,"date":"2003-05-31T00:00:00.000+0000"}],"id":150,"title":"Losing Grip"}
+     */
+
+    private boolean success;
+    private String message;
+    private DataBean data;
+
+    public boolean isSuccess() {
+        return success;
     }
 
-    public void setResource(ResourceBean resource) {
-        this.resource = resource;
+    public void setSuccess(boolean success) {
+        this.success = success;
     }
 
-    public static class ResourceBean {
-            /**
-             * title : Love Story
-             * singers : [{"info":"Taylor Alison Swift (born December 13, 1989 in Wyomissing, Pennsylvania) is an American country pop singer-songwriter and actress.  In 2006, she released her debut single \"Tim McGraw\", then her self-titled debut album, which was subsequently certified multi-platinum by the Recording Industry Association of America. In November 2008, Swift released her second album, Fearless. Fearless and Taylor Swift finished 2008 at number-three and number-six respectively, with sales of 2.1 and 1.5 million. Fearless has topped the Billboard 200 in 11 non-consecutive weeks; no album has spent more time at No. Read more about Taylor Swift on Last.fm .","type":"Female","born":"1989-12-13","area":"United States","image":"https://draw.acharts.net/artist/taylor_swift-54661b9acd1f9-l.png","id":1710,"name":"Taylor Swift"}]
-             * ranks : [49,46,46,42,40,41,38,33,29,26,26,28,34,24,21,18,18,16,14,14,15,13,13,12,9,8,7,7,5,5,5,5,4,5,7,11,12,12,14,18,14,16,15,14,14,13,9,5,16]
-             * id : 37722
-             */
+    public String getMessage() {
+        return message;
+    }
 
-        private String title;
+    public void setMessage(String message) {
+        this.message = message;
+    }
+
+    public DataBean getData() {
+        return data;
+    }
+
+    public void setData(DataBean data) {
+        this.data = data;
+    }
+
+    public static class DataBean {
+        /**
+         * singers : [{"id":148,"image":"https://draw.acharts.net/artist/avril_lavigne-54661eb150e10-l.png","name":"Avril Lavigne"}]
+         * billboards : [{"rank":71,"date":"2003-04-26T00:00:00.000+0000"},{"rank":68,"date":"2003-05-03T00:00:00.000+0000"},{"rank":64,"date":"2003-05-10T00:00:00.000+0000"},{"rank":64,"date":"2003-05-17T00:00:00.000+0000"},{"rank":70,"date":"2003-05-24T00:00:00.000+0000"},{"rank":93,"date":"2003-05-31T00:00:00.000+0000"}]
+         * id : 150
+         * title : Losing Grip
+         */
+
         private int id;
+        private String title;
         private List<SingersBean> singers;
-        private List<Integer> ranks;
-
-        public String getTitle() {
-            return title;
-        }
-
-        public void setTitle(String title) {
-            this.title = title;
-        }
+        private List<BillboardsBean> billboards;
 
         public int getId() {
             return id;
@@ -41,6 +58,14 @@ public class SongBean {
 
         public void setId(int id) {
             this.id = id;
+        }
+
+        public String getTitle() {
+            return title;
+        }
+
+        public void setTitle(String title) {
+            this.title = title;
         }
 
         public List<SingersBean> getSingers() {
@@ -51,53 +76,31 @@ public class SongBean {
             this.singers = singers;
         }
 
-        public List<Integer> getRanks() {
-            return ranks;
+        public List<BillboardsBean> getBillboards() {
+            return billboards;
         }
 
-        public void setRanks(List<Integer> ranks) {
-            this.ranks = ranks;
+        public void setBillboards(List<BillboardsBean> billboards) {
+            this.billboards = billboards;
         }
 
         public static class SingersBean {
-            private String info;
-            private String type;
-            private String born;
-            private String area;
-            private String image;
+            /**
+             * id : 148
+             * image : https://draw.acharts.net/artist/avril_lavigne-54661eb150e10-l.png
+             * name : Avril Lavigne
+             */
+
             private int id;
+            private String image;
             private String name;
 
-            public String getInfo() {
-                return info;
+            public int getId() {
+                return id;
             }
 
-            public void setInfo(String info) {
-                this.info = info;
-            }
-
-            public String getType() {
-                return type;
-            }
-
-            public void setType(String type) {
-                this.type = type;
-            }
-
-            public String getBorn() {
-                return born;
-            }
-
-            public void setBorn(String born) {
-                this.born = born;
-            }
-
-            public String getArea() {
-                return area;
-            }
-
-            public void setArea(String area) {
-                this.area = area;
+            public void setId(int id) {
+                this.id = id;
             }
 
             public String getImage() {
@@ -108,20 +111,38 @@ public class SongBean {
                 this.image = image;
             }
 
-            public int getId() {
-                return id;
-            }
-
-            public void setId(int id) {
-                this.id = id;
-            }
-
             public String getName() {
                 return name;
             }
 
             public void setName(String name) {
                 this.name = name;
+            }
+        }
+
+        public static class BillboardsBean {
+            /**
+             * rank : 71
+             * date : 2003-04-26T00:00:00.000+0000
+             */
+
+            private int rank;
+            private String date;
+
+            public int getRank() {
+                return rank;
+            }
+
+            public void setRank(int rank) {
+                this.rank = rank;
+            }
+
+            public String getDate() {
+                return date;
+            }
+
+            public void setDate(String date) {
+                this.date = date;
             }
         }
     }

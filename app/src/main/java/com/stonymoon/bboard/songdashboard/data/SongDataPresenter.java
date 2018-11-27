@@ -4,6 +4,9 @@ import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.BillboardService;
 import com.stonymoon.bboard.bean.SongBean;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -42,7 +45,11 @@ public class SongDataPresenter implements SongDataContract.Presenter {
                     @Override
                     public void onNext(SongBean songBean) {
                         mView.showProgressBar(false);
-                        mView.initData(songBean.getResource().getRanks());
+                        List<Integer> data = new ArrayList<>(100);
+                        for (SongBean.DataBean.BillboardsBean billboard : songBean.getData().getBillboards()) {
+                            data.add(billboard.getRank());
+                        }
+                        mView.initData(data);
                     }
                 });
     }

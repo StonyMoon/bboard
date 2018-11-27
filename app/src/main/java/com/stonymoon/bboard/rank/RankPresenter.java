@@ -4,7 +4,6 @@ import com.stonymoon.bboard.api.BaseDataManager;
 import com.stonymoon.bboard.api.services.BillboardService;
 import com.stonymoon.bboard.bean.RankBean;
 
-
 import java.util.Collections;
 import java.util.List;
 
@@ -26,7 +25,7 @@ public class RankPresenter implements RankContract.Presenter {
     public void start() {
         mRankView.showProgressBar(true);
         BillboardService service = BaseDataManager.getHttpManager().create(BillboardService.class);
-        service.getBillBoard("2018")
+        service.getBillBoard()
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(new Subscriber<RankBean>() {
@@ -42,7 +41,7 @@ public class RankPresenter implements RankContract.Presenter {
 
                     @Override
                     public void onNext(RankBean response) {
-                        List<RankBean.ResourceBean> list = response.getResource();
+                        List<RankBean.DataBean> list = response.getData();
                         Collections.sort(list);
                         mRankView.showList(list);
                         mRankView.showProgressBar(false);

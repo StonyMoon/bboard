@@ -22,6 +22,8 @@
     <string name="version_info">版本信息</string>
     <string name="singer_born">今日生日歌手</string>
 
+    <string name="data_not_found">未查询到这首歌数据</string>
+
 
     <!--info-->
     <string name="contact_detail">有程序出错或者有想要添加的功能可以联系我 2365975967@qq.com</string>

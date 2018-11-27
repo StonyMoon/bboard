@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface TodayContract {
     interface View extends LoadingBaseView<Presenter> {
-        void showSinger(List<SingerBornBean.ResourceBean> singersBeans);
+        void showSinger(List<SingerBornBean.DataBean> singersBeans);
 
         void showError();
     }
